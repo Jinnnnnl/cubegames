@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>密室逃脱 - 六面体房间</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 游戏UI -->
+        <div class="game-ui">
+            <div class="progress-bar">
+                <div class="progress-text">进度: <span id="progress">0/6</span></div>
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="controls">
+                <button class="control-btn" onclick="rotateTo('front')">前</button>
+                <button class="control-btn" onclick="rotateTo('back')">后</button>
+                <button class="control-btn" onclick="rotateTo('left')">左</button>
+                <button class="control-btn" onclick="rotateTo('right')">右</button>
+                <button class="control-btn" onclick="rotateTo('top')">上</button>
+                <button class="control-btn" onclick="rotateTo('bottom')">下</button>
+            </div>
+        </div>
+
+        <!-- 3D房间容器 -->
+        <div class="room-container">
+            <div class="room" id="room">
+                <!-- 前墙 -->
+                <div class="wall front-wall" data-wall="front">
+                    <h3>封神战力榜单监督管理暂行办法</h3>
+                    <div class="puzzle-container" id="frontPuzzle">
+                        <button class="solve-btn" onclick="loadPuzzle('front')">📜 开启卷宗</button>
+                        <div class="clue">点击开启卷宗，仔细阅读并填入正确答案</div>
+                    </div>
+                </div>
+
+                <!-- 后墙 -->
+                <div class="wall back-wall" data-wall="back">
+                    <h3>法宝争夺战</h3>
+                    <div class="puzzle-container" id="backPuzzle">
+                        <button class="solve-btn" onclick="loadBackWall()" disabled>🔒 需先完成前墙</button>
+                        <div class="clue">借你一双慧眼，看清法宝真面目~</div>
+                    </div>
+                </div>
+
+                <!-- 左墙 -->
+                <div class="wall left-wall" data-wall="left">
+                    <h3>trinity Impossible</h3>
+                    <div class="puzzle-container" id="leftPuzzle">
+                        <button class="solve-btn" onclick="loadLeftWall()" disabled>🔒 需先完成前墙</button>
+                        <div class="clue">不可能三角挑战</div>
+                    </div>
+                </div>
+
+                <!-- 右墙 -->
+                <div class="wall right-wall" data-wall="right">
+                    <h3>迷宫探秘</h3>
+                    <div class="puzzle-container" id="rightPuzzle">
+                        <button class="solve-btn" onclick="loadPuzzle('right')" disabled>🔒 需先完成前墙</button>
+                        <div class="clue">一个关于选择与命运的迷宫。</div>
+                    </div>
+                </div>
+
+                <!-- 上墙 -->
+                <div class="wall top-wall" data-wall="top">
+                    <h3>猜猜是哪家</h3>
+                    <div class="puzzle-container" id="topPuzzle">
+                        <button class="solve-btn" onclick="loadPuzzle('top')" disabled>🔒 需先完成前墙</button>
+                        <div class="clue">猜猜这些卡牌代表哪家公司</div>
+                    </div>
+                </div>
+
+                <!-- 下墙 -->
+                <div class="wall bottom-wall" data-wall="bottom">
+                    <h3>妲己的尾巴，把握得住吗？</h3>
+                    <div class="puzzle-container" id="bottomPuzzle">
+                        <button class="solve-btn" onclick="loadDownWall()" disabled>🔒 需先完成前墙</button>
+                        <div class="clue">妲己的九尾世界等待着你的挑战</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 解密区域 -->
+        <div class="decryption-area">
+            <p id="decryption-text">____________ is the key</p>
+        </div>
+
+        <!-- 二维码弹窗 -->
+        <div id="qr-code-modal" class="qr-code-modal">
+            <div class="qr-code-content">
+                <span class="close-qr-btn">&times;</span>
+                <img src="assets/gm 2025-11-07.png" alt="WeChat QR Code">
+            </div>
+        </div>
+        <!-- 胜利弹窗 -->
+        <div class="victory-modal" id="victoryModal">
+            <div class="modal-content">
+                <h2>🎉 恭喜通关！</h2>
+                <p>你成功逃出了密室！</p>
+                <p>用时: <span id="gameTime"></span></p>
+                <button onclick="restartGame()" class="solve-btn">重新开始</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const correctKey = 'transparency';
+            const input = document.createElement('input');
+            input.id = 'decryption-input';
+            input.type = 'text';
+            input.maxLength = 12;
+            input.autocomplete = 'off';
+            input.autocapitalize = 'off';
+            input.spellcheck = false;
+            input.style.position = 'absolute';
+            input.style.left = '-9999px';
+            document.body.appendChild(input);
+
+            function getTyped() { return (input.value || '').toLowerCase(); }
+
+            input.addEventListener('input', function() {
+                const typedKey = getTyped();
+                updateDecryptionText(typedKey);
+                if (typedKey === correctKey) {
+                    showQrCode();
+                    input.value = '';
+                    updateDecryptionText('');
+                }
+            });
+
+            // allow focusing the hidden input when clicking the decryption area
+            const decryptionArea = document.querySelector('.decryption-area');
+            if (decryptionArea) {
+                decryptionArea.addEventListener('click', function() { input.focus(); });
+            }
+
+            // initialize display
+            updateDecryptionText('');
+
+            function updateDecryptionText(typedKey) {
+                typedKey = typedKey || '';
+                // 从左到右显示已输入的字母，未输入部分显示下划线
+                const display = typedKey + '_'.repeat(12 - typedKey.length);
+                document.getElementById('decryption-text').textContent = display + ' is the key';
+            }
+
+            function showQrCode() {
+                const modal = document.getElementById('qr-code-modal');
+                modal.style.display = 'flex';
+            }
+
+            const closeBtn = document.querySelector('.close-qr-btn');
+            if(closeBtn) {
+                closeBtn.onclick = function() {
+                    const modal = document.getElementById('qr-code-modal');
+                    modal.style.display = 'none';
+                }
+            }
+
+            window.onclick = function(event) {
+                const modal = document.getElementById('qr-code-modal');
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+
+            // focus on load so users can type immediately
+            input.focus();
+        });
+    </script>
+    <script>
+        // 确保函数在页面加载后立即可用
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, binding functions...');
+            
+            // 直接定义rotateTo函数
+            window.rotateTo = function(wall) {
+                console.log('rotateTo called with:', wall);
+                const room = document.getElementById('room');
+                if (!room) {
+                    console.error('Room element not found');
+                    return;
+                }
+                
+                const rotations = {
+                    front: 'rotateX(0deg) rotateY(0deg)',
+                    back: 'rotateX(0deg) rotateY(180deg)',
+                    left: 'rotateX(0deg) rotateY(90deg)',
+                    right: 'rotateX(0deg) rotateY(-90deg)',
+                    top: 'rotateX(-90deg) rotateY(0deg)',
+                    bottom: 'rotateX(90deg) rotateY(0deg)'
+                };
+                
+                room.style.transform = rotations[wall];
+                console.log('Applied transform:', rotations[wall]);
+            };
+            
+            // 直接定义loadPuzzle函数
+            window.loadPuzzle = function(wall) {
+                console.log('loadPuzzle called with:', wall);
+                
+                switch(wall) {
+                    case 'front':
+                        loadFrontWall();
+                        break;
+                    case 'back':
+                        window.open('games/back-wall.html', '_blank');
+                        break;
+                    case 'left':
+                        window.open('games/left-wall.html', '_blank');
+                        break;
+                    case 'right':
+                        window.open('games/right-wall.html', '_blank');
+                        break;
+                    case 'top':
+                        console.log('Navigating to guess-company game...');
+                        window.location.href = 'games/guess-company.html';
+                        break;
+                    case 'bottom':
+                    case 'down':
+                        window.open('games/down-wall.html', '_blank');
+                        break;
+                    default:
+                        alert('加载 ' + wall + ' 墙谜题');
+                }
+            };
+            
+            // 各个墙面的专门加载函数
+            window.loadBackWall = function() {
+                console.log('loadBackWall called');
+                window.open('games/back-wall.html', '_blank');
+            };
+            
+            window.loadLeftWall = function() {
+                console.log('loadLeftWall called');
+                window.open('games/left-wall.html', '_blank');
+            };
+            
+
+            window.loadTopWall = function() {
+                console.log('loadTopWall called');
+                window.open('games/guess-company.html', '_blank');
+            };
+            
+            window.loadDownWall = function() {
+                console.log('loadDownWall called');
+                window.open('games/down-wall.html', '_blank');
+            };
+            
+            // 前墙谜题加载函数
+            function loadFrontWall() {
+                console.log('Loading front wall puzzle...');
+                
+                // 动态加载封神卷宗谜题
+                const script = document.createElement('script');
+                script.src = 'puzzles/front-puzzle.js';
+                script.onload = () => {
+                    console.log('Front puzzle script loaded');
+                    if (window.initFrontPuzzle) {
+                        window.initFrontPuzzle();
+                    } else {
+                        console.error('initFrontPuzzle function not found');
+                    }
+                };
+                script.onerror = () => {
+                    console.error('Failed to load front puzzle script');
+                    alert('加载封神卷宗失败，请检查文件路径');
+                };
+                document.head.appendChild(script);
+                
+                // 加载对应的CSS文件
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'puzzles/front-puzzle.css';
+                link.onerror = () => {
+                    console.error('Failed to load front puzzle CSS');
+                };
+                document.head.appendChild(link);
+            }
+            
+            // 标记墙面完成状态的函数
+            window.markWallCompleted = function(wallName) {
+                console.log('Marking wall completed:', wallName);
+                localStorage.setItem(wallName + 'WallCompleted', 'true');
+                updateWallStatus(wallName);
+            };
+            
+            // 更新墙面状态显示
+            function updateWallStatus(wallName) {
+                const wallElement = document.querySelector(`[data-wall="${wallName}"]`);
+                if (wallElement) {
+                    wallElement.classList.add('solved');
+                    const button = wallElement.querySelector('.solve-btn');
+                    const clue = wallElement.querySelector('.clue');
+                    if (button && clue) {
+                        button.innerHTML = '✅ 已完成';
+                        button.disabled = true;
+                        clue.innerHTML = '恭喜！你已经完成了这个挑战！';
+                    }
+                }
+            }
+            
+            // 检查所有墙面的完成状态
+            function checkWallCompletionStatus() {
+                const walls = ['front', 'back', 'left', 'right', 'top', 'bottom'];
+                walls.forEach(wall => {
+                    if (localStorage.getItem(wall + 'WallCompleted') === 'true') {
+                        updateWallStatus(wall);
+                    }
+                });
+            }
+            
+            // 页面加载时检查完成状态
+            checkWallCompletionStatus();
+            
+            console.log('Functions bound successfully');
+        });
+    </script>
+</body>
+</html>

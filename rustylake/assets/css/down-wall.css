@@ -1,0 +1,832 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+@font-face {
+    font-family: 'Zpix';
+    src: url('https://cdn.jsdelivr.net/gh/SolidZORO/zpix-pixel-font@latest/dist/zpix.ttf') format('truetype');
+}
+
+:root {
+    --pixel-bg: #1a1a1a;
+    --pixel-text: #faef5d;
+    --pixel-accent: #ff6b6b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+}
+
+body {
+    font-family: 'Press Start 2P', 'Zpix', 'VT323', Arial, sans-serif;
+    background: var(--pixel-bg);
+    color: var(--pixel-text);
+    overflow: hidden;
+}
+
+.game-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+/* 游戏阶段样式 */
+.game-stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.game-stage.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 背景图片样式 */
+.background-image {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-color: #000;
+}
+
+/* 交互区域 */
+.interactive-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 第一阶段覆盖层 */
+.stage1-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 0;
+}
+
+.game-title-stage1 {
+    text-align: center;
+}
+
+.game-title-stage1 h1 {
+    font-size: 3.5rem;
+    color: #ffffff;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    margin: 0;
+    font-weight: bold;
+}
+
+/* 脉冲圆环效果 - 改为白色 */
+.pulse-ring {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.pulse-ring:hover {
+    transform: scale(1.1);
+    border-color: #f0f0f0;
+}
+
+.pulse-dot {
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+@keyframes pulse-dot {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* 衣柜位置的脉冲圆环 */
+#cabinetRing {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 视频容器样式 */
+.video-container {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameVideo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* 游戏开始场景样式 */
+.game-start-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.game-title h1 {
+    font-size: 3rem;
+    color: #ff6b6b;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
+}
+
+.game-title h2 {
+    font-size: 1.8rem;
+    color: #ffa502;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.start-game-btn {
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    background: linear-gradient(45deg, #ff6b6b, #ffa502);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.start-game-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+/* 游戏主界面样式 */
+.game-header {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #ff6b6b;
+}
+
+.center-header h1 {
+    color: #ff6b6b;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.game-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 1.1rem;
+}
+
+.game-info span {
+    color: #ffa502;
+}
+
+.game-content {
+    display: flex;
+    height: calc(100vh - 120px);
+}
+
+/* 游戏主界面新布局 */
+#gameMain {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* 游戏背景 */
+.game-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/cards/6.PNG') center/cover no-repeat;
+    background-color: #2c3e50;
+    z-index: 1;
+}
+
+/* 狐狸尾巴容器 */
+.fox-tail-container {
+    position: absolute;
+    top: 10vw; /* 使用视口宽度的10%作为上边距 */
+    left: 10vw; /* 使用视口宽度的10%作为左边距 */
+    z-index: 2;
+    transform: scale(5); /* 再次放大1倍，总共放大5倍 */
+    transform-origin: top left;
+}
+
+#foxTail {
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* 小球样式 */
+.ball {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff4757;
+    border-radius: 0; /* 移除圆角，使其呈现像素风格 */
+    box-shadow: inset -4px -4px 0 0 #c44569; /* 像素风格阴影 */
+    image-rendering: pixelated; /* 像素渲染 */
+    z-index: 3;
+    display: none;
+    border: 2px solid #000; /* 添加黑色边框增强像素感 */
+}
+
+/* 右侧计分板 */
+.score-board-right {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    width: 80px;
+    height: 400px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid #ffa502;
+    border-radius: 10px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.score-title {
+    background: #ffa502;
+    color: #000;
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.score-zones {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.score-zone {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 1px solid #555;
+    transition: background-color 0.3s;
+}
+
+.score-zone:hover {
+    background: rgba(255, 165, 2, 0.3);
+}
+
+.score-zone:last-child {
+    border-bottom: none;
+}
+
+/* 底部下注面板 */
+.betting-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: rgba(0, 0, 0, 0.9);
+    border-top: 3px solid #ff6b6b;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.player-info {
+    color: #ffa502;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.bet-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.bet-controls label {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.bet-controls input {
+    padding: 10px;
+    border: 2px solid #ff6b6b;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    width: 80px;
+    text-align: center;
+}
+
+.bet-button {
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #ff6b6b, #ffa502);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.bet-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+.bet-button:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.game-status {
+    color: #ffa502;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff6b6b, #ffa502);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.4);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    color: #ffa502;
+}
+
+/* 模态框样式 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: #2c3e50;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #ff6b6b;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content h2 {
+    color: #ff6b6b;
+    margin-bottom: 20px;
+}
+
+.final-result {
+    margin-bottom: 20px;
+}
+
+.final-score {
+    font-size: 1.5rem;
+    color: #ffa502;
+    margin: 15px 0;
+}
+
+.score-evaluation {
+    color: #ecf0f1;
+    margin: 15px 0;
+}
+
+.result-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* 响应式设计 */
+.game-header {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center; /* 保持标题和控件整体居中 */
+    align-items: center;
+    position: relative;
+}
+
+.game-info-top {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.game-info-left span {
+    margin-right: 12px;
+    font-weight: bold;
+}
+
+.game-controls-top {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+@media (max-width: 1200px) {
+    .game-content {
+        flex-direction: column;
+    }
+    
+    .control-panel {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+    .score-board, .betting-area, .game-status {
+        flex: 1;
+        margin: 0 10px;
+    }
+    
+    .game-title-stage1 h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .game-title h1 {
+        font-size: 2rem;
+    }
+    
+    .game-title h2 {
+        font-size: 1.2rem;
+    }
+    
+    .game-title-stage1 h1 {
+        font-size: 2rem;
+    }
+    
+    .start-game-btn {
+        font-size: 1.2rem;
+        padding: 12px 30px;
+    }
+
+    /* 呼吸动态按钮样式（参考首页） */
+    .pulse-btn {
+        width: 40px; /* 缩小为一半 */
+        height: 40px;
+        border-radius: 50%;
+        background: transparent;
+        display: block;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        z-index: 2000; /* 提升层级，确保在所有元素之上 */
+        cursor: pointer;
+        pointer-events: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pulse 2s infinite;
+    }
+
+    /* 中心可点击点 */
+    .pulse-btn .pulse-core {
+        width: 18px; /* 缩小为一半 */
+        height: 18px;
+        background: #ffffff; /* 改为白色 */
+        border-radius: 50%;
+        box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+    }
+
+    .pulse-btn.core .pulse-core {
+        animation: pulseCore 1.6s infinite ease-in-out;
+    }
+
+    /* 模仿 stage1 的扩散环 */
+    @keyframes pulse {
+        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+        70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+    }
+
+    @keyframes pulseCore {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.08); }
+        100% { transform: scale(1); }
+    }
+    
+    #gameCanvas {
+        width: 100%;
+        height: auto;
+    }
+    
+    .control-panel {
+        flex-direction: column;
+    }
+}
+
+/* 点击区域样式 */
+.wardrobe-container {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 80vw; /* 与视频显示宽度保持一致的较大宽度 */
+    /* 移除固定 max-width，保证随浏览器缩放同步缩放 */
+    max-width: none;
+    aspect-ratio: 2944/2055; /* 保持与原图相同的宽高比 */
+    background-color: #000;
+    overflow: hidden;
+}
+
+.wardrobe-container img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover; /* 填满容器，保持视觉一致性与视频 */
+}
+
+.clickable-areas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000; /* 保证引导按钮能被挂到此容器并覆盖区域 */
+    pointer-events: none; /* 容器本身不拦截事件，事件交给内部区域或按钮 */
+}
+
+.click-area {
+    position: absolute;
+    cursor: default !important; /* 不改变鼠标图标 */
+    background: transparent; /* 设为透明，避免遮挡引导按钮 */
+    border: 0; /* 去除红色边框 */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    z-index: 10; /* 降低区域层级，保证引导按钮可覆盖 */
+    pointer-events: auto;
+    overflow: visible; /* 允许内部的引导按钮在边界外显示 */
+    /* 调试时显示边界，正式版本可以设置为透明 */
+}
+
+.click-area:hover {
+    /* 取消 hover 高亮反馈，交由引导按钮提示 */
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.click-area.clicked {
+    background: rgba(46, 204, 113, 0.3);
+    border-color: #2ecc71;
+    pointer-events: none;
+}
+
+/* 找到尾巴弹窗样式 */
+.tail-found-modal {
+    max-width: 500px;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    border: 3px solid #ff6b6b;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ff6b6b;
+    padding-bottom: 15px;
+}
+
+.modal-header h3 {
+    color: #ff6b6b;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.close {
+    color: #ecf0f1;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ff6b6b;
+}
+
+.modal-body {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.found-tail-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ffa502;
+    box-shadow: 0 5px 15px rgba(255, 165, 2, 0.3);
+}
+
+.success-message {
+    color: #2ecc71;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.score-change {
+    color: #ffa502;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 165, 2, 0.5);
+    animation: scoreGlow 1s ease-in-out;
+}
+
+@keyframes scoreGlow {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.game-btn {
+    background: linear-gradient(45deg, #ff6b6b, #ffa502);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.game-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+@media (max-width: 480px) {
+    .game-title-stage1 h1 {
+        font-size: 1.5rem;
+        padding: 0 20px;
+    }
+    
+    .stage1-overlay {
+        padding: 30px 0;
+    }
+    
+    .tail-found-modal {
+        max-width: 90%;
+        margin: 0 20px;
+    }
+    
+    .found-tail-image {
+        max-height: 200px;
+    }
+}
+
+/* 像素风格按钮 */
+.pixel-btn {
+    font-family: 'Press Start 2P', 'Zpix', 'VT323', Arial, sans-serif;
+    background: linear-gradient(45deg, var(--pixel-accent), #ffa502);
+    color: var(--pixel-text);
+    border: 3px solid #000;
+    padding: 8px 14px;
+    font-size: 12px;
+    text-transform: none;
+    box-shadow: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.pixel-btn:hover {
+    filter: brightness(1.05);
+}
+
+/* 确保结果 modal 中的返回主菜单按钮样式居中 */
+.result-actions .pixel-btn {
+    padding: 10px 18px;
+    font-size: 12px;
+}

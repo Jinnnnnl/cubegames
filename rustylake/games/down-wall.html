@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>妲己的尾巴，把握得住吗？</title>
+    <link rel="stylesheet" href="../assets/css/down-wall.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 游戏阶段1：衣柜场景 -->
+        <div id="stage1" class="game-stage active">
+            <div class="background-image" style="background-image: url('../assets/images/cards/1.jpg');">
+                <div class="stage1-overlay">
+                    <div class="game-title-stage1">
+                        <h1>妲己的尾巴，你把握得住吗？</h1>
+                    </div>
+                    <div class="interactive-area">
+                        <div class="pulse-ring" id="cabinetRing">
+                            <div class="pulse-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 游戏阶段2：视频播放场景 -->
+        <div id="stage2" class="game-stage">
+            <div class="video-container">
+                <video id="gameVideo" width="100%" height="100%" autoplay muted>
+                    <source src="../assets/images/cards/2.5.mov" type="video/mp4">
+                    您的浏览器不支持视频播放。
+                </video>
+            </div>
+        </div>
+
+        <!-- 游戏阶段3：游戏开始场景 -->
+        <div id="stage3" class="game-stage">
+            <div class="background-image" style="background-image: url('../assets/images/cards/5.jpg');">
+                <div class="game-start-overlay">
+                    <div class="game-title">
+                        <h1>一只优雅的九尾狐身影闪过，在一个神秘的房间中消失</h1>
+                        <h2>传说集齐她的九条尾巴就能带来无尽的财富与好运，无数寻宝者趋之若鹜..</h2>
+                    </div>
+                    <button id="startGameBtn" class="start-game-btn">开始游戏</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 游戏阶段4：寻找狐狸尾巴 -->
+        <div id="stage4" class="game-stage">
+            <div class="game-header center-header">
+                <h1>寻找狐狸尾巴</h1>
+                <p style="color:#fff;font-size:0.5em;">_ r _ _ s _ _ _ _ _ _ _ </p>
+                <div class="game-info-top">
+                    <div class="game-info-left">
+                        <span>分数: <span id="player-score">0</span></span>
+                    </div>
+                    <div class="game-controls-top">
+                        <button id="back-btn" class="pixel-btn control-btn">返回主菜单</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-content">
+                <div class="wardrobe-container">
+                    <img id="wardrobe-image" src="../assets/images/cards/1.jpg" alt="妲己的衣柜">
+                    <div id="clickable-areas" class="clickable-areas">
+                        <!-- 区域：对应17.png -->
+                        <div class="click-area" data-tail="17" title="点击寻找狐狸尾巴"></div>
+                        <!-- 新增区域：对应13.png -->
+                        <div class="click-area" data-tail="13" title="点击寻找狐狸尾巴"></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- 找到尾巴弹窗 -->
+        <div id="tailFoundModal" class="modal">
+            <div class="modal-content tail-found-modal">
+                <div class="modal-header">
+                    <h3>恭喜！</h3>
+                    <span class="close" id="closeTailModal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <img id="foundTailImage" src="" alt="找到的狐狸尾巴" class="found-tail-image">
+                    <p class="success-message">你找到了狐狸尾巴，继续找找看吧！</p>
+                    <div class="score-change" id="scoreChange">+100分</div>
+                </div>
+                <div class="modal-footer">
+                    <button id="continueBtn" class="game-btn">继续寻找</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结果弹窗 -->
+        <div id="resultModal" class="modal">
+            <div class="modal-content">
+                <h2>游戏结果</h2>
+                <div class="final-result">
+                    <p id="result-message"></p>
+                    <div class="final-score">
+                        <span>最终得分: </span>
+                        <span id="final-score">0</span>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button id="back-to-menu" class="pixel-btn btn btn-secondary">返回主菜单</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/down-wall.js"></script>
+</body>
+</html>

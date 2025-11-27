@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法宝争夺战</title>
+    <link rel="stylesheet" href="back-wall.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="main-screen" id="mainScreen">
+            <h1 class="game-title">法宝争夺战</h1>
+            <div class="enter-btn" onclick="enterGame()">点击进入</div>
+        </div>
+        
+        <div class="story-screen hidden" id="storyScreen">
+            <div class="story-content">
+                <h2 class="story-title">《封神·法宝劫》三宝现世</h2>
+                
+                <div class="story-section">
+                    <h3>昆仑山·玉虚宫</h3>
+                    <p align="center">一道紫电劈开云海</p>
+                    <p align="center">元始天尊蓦然睁眼</p>
+                    <p align="center">手中拂尘无风自动</p>
+                    <p align="center">_ _ a _ _ _ a _ _ _ _ _ </p>
+                    <p class="dialogue">"天机乱了。"</p>
+                    <p>阶下十二金仙齐齐变色。</p>
+                    <p>忽听得宫外雷声滚地，但见：</p>
+                </div>
+                
+                <div class="story-section treasures-appear">
+                    <div class="treasure-desc">
+                        <span class="treasure-name">东天升起百丈镜光</span>，照得千里山河透明如琉璃——
+                        <p><strong>天瑜瑶光镜现世！</strong></p>
+                    </div>
+                    <div class="treasure-desc">
+                        <span class="treasure-name">西土漫卷金穗幡影</span>，所过处枯木逢春饿殍饱食——
+                        <p><strong>瑞穗丰达幡临凡！</strong></p>
+                    </div>
+                    <div class="treasure-desc">
+                        <span class="treasure-name">九霄劈落玄雷巨印</span>，震得地脉翻涌群妖俯首——
+                        <p><strong>雷煞根源印降劫！</strong></p>
+                    </div>
+                </div>
+                
+                <div class="story-section">
+                    <p>三件至宝同时嗡鸣，苍穹裂开三道缝隙：</p>
+                    <ul class="visions">
+                        <li><strong>瑶光镜</strong>射出的净光里，通天教主虚影冷笑</li>
+                        <li><strong>丰达幡</strong>卷起的金风中，赵公明定海珠黯然失色</li>
+                        <li><strong>根源印</strong>劈落的雷柱间，元始天尊的玉如意竟被弹开</li>
+                    </ul>
+                </div>
+                
+                <div class="story-section final">
+                    <p>姜子牙的打神鞭突然断成三截，对应三宝的鞭节上分别刻着：</p>
+                    <div class="prophecies">
+                        <div class="prophecy"><span class="symbol">镜</span>：照破虚妄者，必为虚妄所噬</div>
+                        <div class="prophecy"><span class="symbol">幡</span>：丰登之宴，原是散魂之席</div>
+                        <div class="prophecy"><span class="symbol">印</span>：雷煞之下，从无活口</div>
+                    </div>
+                     <p>考验你记忆力的时间到了，翻出相同的法宝卡牌，获取抢夺法宝的机会！</p>
+                </div>
+                
+                <div class="continue-btn" onclick="startMemoryGame()">开抢</div>
+            </div>
+        </div>
+        
+        <!-- 记忆配对游戏界面 -->
+        <div class="memory-game-screen hidden" id="memoryGameScreen">
+            <div class="game-header">
+                <h2 class="game-title">法宝记忆配对,请翻开下方卡牌</h2>
+                <div class="game-info">
+                    <div class="score">得分: <span id="gameScore">0</span></div>
+                    <div class="moves">步数: <span id="gameMoves">0</span></div>
+                    <div class="timer">时间: <span id="gameTimer">60</span>s</div>
+                </div>
+            </div>
+            
+            <div class="memory-cards-container" id="memoryCardsContainer">
+                <!-- 卡片将通过JavaScript动态生成 -->
+            </div>
+            
+            <div class="game-controls">
+                <button class="control-btn restart-btn" onclick="restartMemoryGame()">重新开始</button>
+            </div>
+        </div>
+        
+        <!-- 法宝详情页面（从游戏中进入） -->
+        <div class="game-treasure-detail hidden" id="gameTreasureDetail">
+            <div class="detail-content">
+                <h2 id="gameTreasureName"></h2>
+                <div id="gameTreasureInfo"></div>
+            </div>
+        </div>
+        
+        <!-- 游戏失败界面 -->
+        <div class="game-failure-screen hidden" id="gameFailureScreen">
+            <div class="failure-content">
+                <h2 class="failure-title">游戏失败</h2>
+                <div id="failureMessage"></div>
+                <div class="failure-controls">
+                    <button class="control-btn restart-btn" onclick="restartMemoryGame()">重新开始</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="treasures-screen hidden" id="treasuresScreen">
+            <h2 class="treasures-title">选择法宝</h2>
+            <div class="treasures-grid">
+                <div class="treasure-card" onclick="selectTreasure('mirror')">
+                    <div class="card-image mirror-card">
+                        <div class="treasure-icon">镜</div>
+                    </div>
+                    <h3>天瑜瑶光镜</h3>
+                    <p class="card-desc">照破虚妄，洞察真相</p>
+                </div>
+                
+                <div class="treasure-card" onclick="selectTreasure('banner')">
+                    <div class="card-image banner-card">
+                        <div class="treasure-icon">幡</div>
+                    </div>
+                    <h3>瑞穗丰达幡</h3>
+                    <p class="card-desc">丰登万物，生机无限</p>
+                </div>
+                
+                <div class="treasure-card" onclick="selectTreasure('seal')">
+                    <div class="card-image seal-card">
+                        <div class="treasure-icon">印</div>
+                    </div>
+                    <h3>雷煞根源印</h3>
+                    <p class="card-desc">雷霆万钧，毁天灭地</p>
+                </div>
+            </div>
+            
+            <div class="memory-game-btn" onclick="startMemoryGame()">开始记忆配对游戏</div>
+        </div>
+        
+        <div class="treasure-detail hidden" id="treasureDetail">
+            <div class="detail-content">
+                <h2 id="treasureName"></h2>
+                <div id="treasureInfo"></div>
+                <div class="back-btn" onclick="backToTreasures()">返回选择</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="back-wall.js"></script>
+</body>
+</html>

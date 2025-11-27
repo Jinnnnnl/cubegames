@@ -1,0 +1,20 @@
+{
+  "path": "d:\\codebuddy\\rustylake",
+  "desc": "这是一个像素风格的密室逃脱游戏项目，包含多个房间的解谜游戏。主要特色包括：3D房间旋转导航、记忆配对游戏、三角形不可能挑战、封神战力榜单管理系统等多种互动游戏元素。采用霓虹像素风格设计，支持移动端触控操作。",
+  "id": "1eb466b039634430adefba95633d0f3c",
+  "data": {
+    "spaceKey": "1eb466b039634430adefba95633d0f3c",
+    "connections": {
+      "webIDE": "https://1eb466b039634430adefba95633d0f3c.ap-singapore.cloudstudio.club",
+      "preview": "",
+      "api": "https://1eb466b039634430adefba95633d0f3c--api.ap-singapore.cloudstudio.club",
+      "pty": "https://1eb466b039634430adefba95633d0f3c--pty.ap-singapore.cloudstudio.club"
+    }
+  },
+  "config": {
+    "api": "https://1eb466b039634430adefba95633d0f3c--api.ap-singapore.cloudstudio.club",
+    "pty": "https://1eb466b039634430adefba95633d0f3c--pty.ap-singapore.cloudstudio.club",
+    "region": "ap-shanghai",
+    "spaceKey": "1eb466b039634430adefba95633d0f3c"
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Test</title>
+</head>
+<body>
+    <button onclick="testRotate()">Test Rotate</button>
+    <button onclick="testLoadPuzzle()">Test Load Puzzle</button>
+    <div id="room" style="width:100px;height:100px;background:red;"></div>
+    
+    <script>
+        // 简化的测试函数
+        function testRotate() {
+            console.log('testRotate called');
+            alert('testRotate works!');
+        }
+        
+        function testLoadPuzzle() {
+            console.log('testLoadPuzzle called');
+            alert('testLoadPuzzle works!');
+        }
+        
+        // 加载主JavaScript文件
+        const script = document.createElement('script');
+        script.src = 'assets/js/main.js';
+        script.onload = () => {
+            console.log('main.js loaded successfully');
+            alert('main.js loaded!');
+        };
+        script.onerror = () => {
+            console.error('Failed to load main.js');
+            alert('Failed to load main.js');
+        };
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>

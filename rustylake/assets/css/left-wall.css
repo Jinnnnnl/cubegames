@@ -1,0 +1,442 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 游戏标题 */
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.game-header h1 {
+    font-size: 2.5em;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #E0E0E0;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid #FFD700;
+    color: #FFD700;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255,215,0,0.2);
+    transform: translateX(-5px);
+}
+
+/* 游戏说明 */
+.instructions {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.instruction-content h3 {
+    color: #FFD700;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.instruction-content p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.instruction-content ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.instruction-content li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.start-btn {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    border: none;
+    color: #333;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 20px auto 0;
+}
+
+.start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+}
+
+/* 游戏主界面 */
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 游戏状态栏 */
+.game-status {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255,255,255,0.1);
+    padding: 15px 25px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.score-display, .timer-display {
+    display: flex;
+    gap: 20px;
+}
+
+.score-display span, .timer-display span {
+    font-weight: bold;
+}
+
+#currentScore {
+    color: #4ECDC4;
+}
+
+#targetScore {
+    color: #FFD700;
+}
+
+#timeLeft {
+    color: #FF6B6B;
+}
+
+/* 圆形评价板 */
+.evaluation-board {
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+.board-svg {
+    filter: drop-shadow(0 0 10px rgba(255,215,0,0.3));
+}
+
+.sector-label {
+    fill: #E0E0E0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.pin-label {
+    fill: #fff;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.draggable-pin {
+    cursor: grab;
+    transition: all 0.2s ease;
+}
+
+.draggable-pin:hover {
+    r: 10;
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+.draggable-pin:active {
+    cursor: grabbing;
+}
+
+#triangle {
+    transition: all 0.3s ease;
+}
+
+/* 参数显示面板 */
+.parameter-panel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.param-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+}
+
+.param-label {
+    font-weight: bold;
+    color: #E0E0E0;
+}
+
+.param-value {
+    font-weight: bold;
+    color: #FFD700;
+}
+
+/* 游戏控制按钮 */
+.game-controls {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.control-btn {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid #4ECDC4;
+    color: #4ECDC4;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    background: rgba(78,205,196,0.2);
+    transform: translateY(-2px);
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#submitBtn:not(:disabled) {
+    background: linear-gradient(45deg, #4ECDC4, #45B7D1);
+    color: #fff;
+    border-color: #4ECDC4;
+}
+
+/* 结果显示区域 */
+.result-display {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 30px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    border: 2px solid #FFD700;
+    text-align: center;
+}
+
+.result-content h2 {
+    color: #FFD700;
+    margin-bottom: 25px;
+    font-size: 2em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.result-params {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.result-param {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255,215,0,0.3);
+}
+
+.result-label {
+    font-weight: bold;
+    color: #E0E0E0;
+}
+
+.result-value {
+    font-weight: bold;
+    color: #FFD700;
+    font-size: 1.1em;
+}
+
+.result-message {
+    background: rgba(255,215,0,0.2);
+    border: 2px solid #FFD700;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #FFD700;
+    line-height: 1.6;
+}
+
+.result-btn {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    border: none;
+    color: #333;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.result-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+}
+
+/* 分享区域 */
+.share-section {
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255,215,0,0.3);
+    text-align: center;
+}
+
+.share-text {
+    font-size: 1.1em;
+    color: #E0E0E0;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.share-qr {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    border: 2px solid #FFD700;
+    box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.share-qr:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255,215,0,0.5);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 10px;
+    }
+    
+    .game-header h1 {
+        font-size: 2em;
+    }
+    
+    .board-svg {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .parameter-panel {
+        grid-template-columns: 1fr;
+    }
+    
+    .game-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .game-status {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .share-qr {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .board-svg {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .back-btn {
+        position: static;
+        margin-bottom: 20px;
+    }
+    
+    .game-header {
+        text-align: center;
+    }
+}
+
+/* 动画效果 */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.draggable-pin:hover {
+    animation: pulse 1s infinite;
+}
+
+@keyframes glow {
+    0% { filter: drop-shadow(0 0 5px rgba(255,215,0,0.5)); }
+    50% { filter: drop-shadow(0 0 20px rgba(255,215,0,0.8)); }
+    100% { filter: drop-shadow(0 0 5px rgba(255,215,0,0.5)); }
+}
+
+#triangle.success {
+    animation: glow 2s infinite;
+}

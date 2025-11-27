@@ -1,0 +1,813 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    background-color: #1a1a2e;
+    color: #fff;
+    overflow: hidden;
+}
+
+.game-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* 通用屏幕样式 */
+.main-screen, .story-screen, .maze-screen, .result-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 主屏幕样式 */
+.game-title {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px #4a00e0, 0 0 20px #4a00e0;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #4a00e0, 0 0 20px #4a00e0;
+    }
+    to {
+        text-shadow: 0 0 15px #8a2be2, 0 0 30px #8a2be2;
+    }
+}
+
+.enter-btn {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #4a00e0, #8a2be2);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(74, 0, 224, 0.4);
+}
+
+.enter-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(74, 0, 224, 0.6);
+}
+
+/* 故事屏幕样式 */
+.story-content {
+    max-width: 800px;
+    padding: 2rem;
+    background-color: rgba(26, 26, 46, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(74, 0, 224, 0.5);
+}
+
+.story-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #8a2be2;
+}
+
+.story-section {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.story-section h3 {
+    color: #8a2be2;
+    margin-bottom: 0.5rem;
+}
+
+.story-section ul {
+    list-style-position: inside;
+    margin-left: 1rem;
+}
+
+.story-section li {
+    margin-bottom: 0.5rem;
+}
+
+.continue-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #4a00e0, #8a2be2);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(74, 0, 224, 0.4);
+    margin: 1rem auto;
+    display: block;
+    text-align: center;
+}
+
+.continue-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(74, 0, 224, 0.6);
+}
+
+/* 迷宫屏幕样式 */
+.maze-screen {
+    padding: 1rem;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(26, 26, 46, 0.8);
+    border-radius: 10px;
+}
+
+.timer, .key-status {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.key-status {
+    color: #ffcc00;
+}
+
+.restart-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #4a00e0, #8a2be2);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(74, 0, 224, 0.4);
+}
+
+.maze-container {
+    display: grid;
+    grid-template-columns: repeat(21, 25px);
+    grid-template-rows: repeat(21, 25px);
+    gap: 0;
+    background-color: #0f0f1a;
+    border: 2px solid #4a00e0;
+    box-shadow: 0 0 20px rgba(74, 0, 224, 0.5);
+    max-width: 100%;
+    overflow: auto;
+    max-height: 60vh;
+}
+
+/* 迷宫单元格样式 */
+.cell {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.wall {
+    background-color: #1a1a2e;
+    border: 1px solid #4a00e0;
+}
+
+.path {
+    background-color: #16213e;
+}
+
+.player {
+    background-color: #4a00e0;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 0 10px #8a2be2;
+    animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 5px #8a2be2;
+    }
+    to {
+        box-shadow: 0 0 15px #8a2be2, 0 0 20px #8a2be2;
+    }
+}
+
+.key {
+    color: #ffcc00;
+    font-size: 1rem;
+    text-shadow: 0 0 5px #ffcc00;
+}
+
+.real-key {
+    color: #c0c0c0; /* 银色 */
+    font-size: 1rem;
+    text-shadow: 0 0 5px #c0c0c0;
+}
+
+.fake-key {
+    color: #ffcc00; /* 金色 */
+    font-size: 1rem;
+    text-shadow: 0 0 5px #ffcc00;
+}
+
+/* 下层迷宫样式 */
+.lower-maze-container {
+    display: grid;
+    border-radius: 0; /* 改为正方形 */
+    background-color: #0f0f1a;
+    border: 2px solid #4a00e0;
+    box-shadow: 0 0 20px rgba(74, 0, 224, 0.5);
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 60vh;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* 宝箱样式 */
+.treasure {
+    font-size: 1.2rem;
+    border-radius: 4px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: treasurePulse 1.5s infinite alternate;
+    border: 2px solid white;
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes treasurePulse {
+    from { transform: scale(1); box-shadow: 0 0 8px currentColor; }
+    to { transform: scale(1.2); box-shadow: 0 0 15px currentColor, 0 0 20px currentColor; }
+}
+
+/* 不同宝箱颜色 */
+.treasure-beta { 
+    background-color: #FF5733; 
+    box-shadow: 0 0 12px #FF5733;
+}
+.treasure-value { 
+    background-color: #33FF57; 
+    box-shadow: 0 0 12px #33FF57;
+}
+.treasure-profit { 
+    background-color: #3357FF; 
+    box-shadow: 0 0 12px #3357FF;
+}
+.treasure-growth { 
+    background-color: #F3FF33; 
+    box-shadow: 0 0 12px #F3FF33;
+}
+.treasure-leverage { 
+    background-color: #FF33F3; 
+    box-shadow: 0 0 12px #FF33F3;
+}
+.treasure-liquidity { 
+    background-color: #33FFF3; 
+    box-shadow: 0 0 12px #33FFF3;
+}
+.treasure-momentum { 
+    background-color: #FF8C33; 
+    box-shadow: 0 0 12px #FF8C33;
+}
+.treasure-residual { 
+    background-color: #8C33FF; 
+    box-shadow: 0 0 12px #8C33FF;
+}
+.treasure-marketcap { 
+    background-color: #33FF8C; 
+    box-shadow: 0 0 12px #33FF8C;
+}
+.treasure-nonlinear { 
+    background-color: #FF338C; 
+    box-shadow: 0 0 12px #FF338C;
+}
+
+/* 地形样式 */
+.wall {
+    background-color: #1a1a2e;
+    border: 1px solid #4a00e0;
+}
+
+.water {
+    background-color: #0077be;
+    background-image: linear-gradient(135deg, #0077be 25%, #0099cc 25%, #0099cc 50%, #0077be 50%, #0077be 75%, #0099cc 75%, #0099cc 100%);
+    background-size: 10px 10px;
+}
+
+.forest {
+    background-color: #228B22;
+    background-image: radial-gradient(circle, #228B22 60%, #006400 100%);
+}
+
+.desert {
+    background-color: #F4A460;
+    background-image: linear-gradient(45deg, #F4A460 25%, #DEB887 25%, #DEB887 50%, #F4A460 50%, #F4A460 75%, #DEB887 75%, #DEB887 100%);
+    background-size: 10px 10px;
+}
+
+.boat {
+    position: absolute;
+    font-size: 1.2rem;
+    z-index: 10;
+}
+
+/* 气泡提示样式 */
+.bubble {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    pointer-events: none;
+    z-index: 100;
+    animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* 宝箱弹窗 */
+.treasure-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 200;
+}
+
+.treasure-modal.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.treasure-modal-content {
+    background: rgba(10, 10, 30, 0.95);
+    border: 1px solid rgba(138, 43, 226, 0.6);
+    border-radius: 16px;
+    padding: 1.5rem;
+    width: min(320px, 90vw);
+    text-align: left;
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+}
+
+.treasure-modal-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffcc00;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.treasure-modal-prompt {
+    font-size: 0.9rem;
+    color: rgba(248, 248, 248, 0.8);
+    margin-bottom: 0.4rem;
+}
+
+.treasure-modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 0.4rem;
+}
+
+.treasure-modal-option {
+    padding: 0.65rem 0.85rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #f8f8f8;
+    text-align: left;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.treasure-modal-option:hover {
+    border-color: rgba(138, 43, 226, 0.9);
+    background: rgba(138, 43, 226, 0.12);
+}
+
+.treasure-modal-feedback {
+    min-height: 1.2rem;
+    font-size: 0.9rem;
+    color: #ffcc00;
+    text-align: center;
+}
+
+.treasure-modal-feedback.shake {
+    animation: shakeFeedback 0.3s;
+}
+
+@keyframes shakeFeedback {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
+}
+
+.ladder-modal-content {
+    max-width: 420px;
+}
+
+.ladder-modal-body {
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(248, 248, 248, 0.95);
+}
+
+.ladder-modal-body p {
+    margin: 0 0 0.45rem;
+}
+
+.treasure-modal-close {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #4a00e0, #8a2be2);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.treasure-modal-close:hover {
+    transform: translateY(-2px);
+}
+
+/* 梯子样式 */
+.ladder {
+    color: #8a2be2;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px #8a2be2;
+}
+
+/* 洞口样式 */
+.hole {
+    background-color: #000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 0 10px #000 inset, 0 0 20px rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    position: relative;
+}
+
+/* 掉落动画 */
+@keyframes fallIntoHole {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; }
+}
+
+@keyframes expandHole {
+    0% { width: 0; height: 0; }
+    100% { width: 100px; height: 100px; }
+}
+
+@keyframes shrinkHole {
+    0% { width: 100px; height: 100px; opacity: 1; }
+    100% { width: 0; height: 0; opacity: 0; }
+}
+
+.exit {
+    background-color: #006400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.exit::after {
+    content: "🚪";
+    font-size: 1.2rem;
+}
+
+.visited {
+    background-color: rgba(74, 0, 224, 0.2);
+}
+
+/* 结果屏幕样式 */
+.result-screen {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.result-content {
+    max-width: 600px;
+    padding: 2rem;
+    background-color: rgba(26, 26, 46, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(74, 0, 224, 0.5);
+    text-align: center;
+}
+
+.result-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.result-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.result-stats {
+    margin: 1.5rem 0;
+    font-size: 1.2rem;
+}
+
+.stat {
+    margin: 0.5rem 0;
+}
+
+.result-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.result-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #4a00e0, #8a2be2);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.result-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(74, 0, 224, 0.6);
+}
+
+/* 成功和失败样式 */
+.success-title {
+    color: #00cc00;
+}
+
+.failure-title {
+    color: #ff3333;
+}
+
+/* 道具图例样式 */
+.legend {
+    margin-top: 1.5rem;
+    background-color: rgba(26, 26, 46, 0.8);
+    border-radius: 10px;
+    padding: 1rem;
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 下层迷宫描述 */
+.lower-maze-description {
+    margin-top: 1.5rem;
+    background: linear-gradient(180deg, rgba(10, 10, 30, 0.95), rgba(12, 12, 45, 0.9));
+    border: 1px solid rgba(138, 43, 226, 0.6);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    font-size: 0.8rem;
+    color: #f8f8f8;
+    letter-spacing: 0.04em;
+    box-shadow: 0 0 25px rgba(138, 43, 226, 0.35);
+    max-width: min(1000px, 92vw);
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.lower-maze-description.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lower-maze-description p {
+    margin: 0 0 0.35rem;
+    color: rgba(248, 248, 248, 0.9);
+    font-size: 0.8rem;
+}
+
+.lower-maze-description strong {
+    color: #ffcc00;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.legend-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.legend-text {
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* 响应式宝箱图例 */
+@media (max-width: 768px) {
+    .legend-item {
+        margin: 0.3rem 0.5rem;
+    }
+}
+
+/* 虚拟摇杆样式 */
+.joystick-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: none; /* 默认隐藏，在移动设备上显示 */
+}
+
+.joystick-base {
+    width: 120px;
+    height: 120px;
+    background-color: rgba(74, 0, 224, 0.3);
+    border: 2px solid rgba(138, 43, 226, 0.5);
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joystick-stick {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #4a00e0, #8a2be2);
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
+    transition: box-shadow 0.2s;
+}
+
+.joystick-stick:active {
+    box-shadow: 0 0 15px rgba(138, 43, 226, 1);
+}
+
+
+/* 重力感应控制样式 */
+.gravity-btn {
+    background: linear-gradient(135deg, #4a00e0, #8a2be2);
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gravity-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(74, 0, 224, 0.4);
+}
+
+.mode-indicator {
+    background-color: rgba(74, 0, 224, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-left: 10px;
+    animation: pulse 2s infinite alternate;
+}
+
+.touch-indicator {
+    background-color: rgba(74, 0, 224, 0.5);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 3rem;
+    }
+    
+    .story-content {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+    
+    .maze-container {
+        grid-template-columns: repeat(21, 16px);
+        grid-template-rows: repeat(21, 16px);
+        max-height: 50vh;
+    }
+    
+    .cell {
+        width: 16px;
+        height: 16px;
+        font-size: 0.8rem;
+    }
+    
+    .player {
+        width: 14px;
+        height: 14px;
+    }
+    
+    /* 在移动设备上显示虚拟摇杆 */
+    .joystick-container {
+        display: block;
+    }
+    
+    /* 调整图例在移动设备上的显示 */
+    .legend {
+        padding: 0.5rem;
+        flex-direction: column;
+    }
+    
+    .legend-item {
+        margin: 0.3rem 0;
+    }
+    
+    /* 调整重力感应按钮在移动设备上的显示 */
+    .gravity-btn {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+    
+    .mode-indicator {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+    
+    /* 调整游戏头部在移动设备上的布局 */
+    .game-header {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+}

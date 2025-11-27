@@ -1,0 +1,1023 @@
+/* 像素风格游戏 - 全局样式 */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+@font-face {
+    font-family: 'Zpix';
+    src: url('https://cdn.jsdelivr.net/gh/SolidZORO/zpix-pixel-font@latest/dist/zpix.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    /* 橙红色系霓虹像素风格配色方案 */
+    --primary-color: #ff8c42;      /* 霓虹橙 */
+    --secondary-color: #00ffff;    /* 霓虹青 */
+    --accent-color: #8a2be2;       /* 霓虹紫 */
+    --background-color: #4a2c4a;   /* 深橙紫色背景 */
+    --text-color: #f0f8ff;         /* 霓虹白 */
+    --success-color: #00ffff;      /* 霓虹青 */
+    --error-color: #ff4500;        /* 橙红色 */
+    --warning-color: #ffa500;      /* 橙色 */
+    --info-color: #8a2be2;         /* 霓虹紫 */
+    --border-radius: 0px;
+    --box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.4);
+    --pixel-border: 4px solid #ff8c42;
+    --transition: all 0.2s steps(2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+}
+
+body {
+    font-family: 'Press Start 2P', 'Zpix', 'VT323', 'Noto Sans SC', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    background-color: var(--background-color);
+    background-image: 
+        linear-gradient(to right, rgba(255, 140, 66, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 140, 66, 0.05) 1px, transparent 1px);
+    background-size: 8px 8px;
+    color: var(--text-color);
+    line-height: 1.4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-shadow: 2px 2px 0px #000;
+    letter-spacing: 1px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color), var(--secondary-color), var(--primary-color));
+    animation: rainbow-shift 3s linear infinite;
+    z-index: 1000;
+}
+
+@keyframes rainbow-shift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.game-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #4c55d88d; /* 橙紫色调 */
+    border: var(--pixel-border);
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 40px);
+    position: relative;
+    overflow: hidden;
+}
+
+.game-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color), var(--secondary-color), var(--primary-color));
+    background-size: 200% 100%;
+    animation: rainbow-shift 3s linear infinite;
+}
+
+.game-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color), var(--accent-color), var(--secondary-color));
+    background-size: 200% 100%;
+    animation: rainbow-shift 3s linear infinite reverse;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 主界面样式 */
+.main-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle at center, rgba(255, 107, 151, 0.1), transparent 70%);
+}
+
+.game-title {
+    color: #FFB347 !important;  /* 浅橙色 */
+    margin-bottom: 3rem;
+    text-align: center;
+    font-size: 48px !important;
+    text-transform: uppercase;
+    position: relative;
+    padding: 10px;
+    text-shadow: 3px 3px 0px #000;
+    letter-spacing: 2px;
+    animation: text-glow 2s ease-in-out infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes text-glow {
+    from {
+        text-shadow: 0 0 5px var(--text-color), 0 0 10px var(--text-color);
+    }
+    to {
+        text-shadow: 0 0 10px var(--text-color), 0 0 20px var(--text-color), 0 0 30px var(--primary-color);
+    }
+}
+
+.enter-btn {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: 4px solid #000;
+    cursor: pointer;
+    font-family: 'Press Start 2P', 'Zpix', cursive;
+    font-size: 14px;
+    transition: var(--transition);
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 8px var(--primary-color);
+    text-shadow: 0 0 5px #fff;
+}
+
+.enter-btn::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid var(--primary-color);
+    z-index: -1;
+}
+
+.enter-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.enter-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--secondary-color);
+}
+
+.enter-btn:hover::after {
+    left: 100%;
+}
+
+.enter-btn:active {
+    transform: translateY(2px);
+}
+
+/* 故事界面样式 */
+.story-screen {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.story-content {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.story-title {
+    font-size: 2.5rem;
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.story-section {
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.story-section h3 {
+    color: #87ceeb;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.story-section p {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    text-indent: 2em;
+}
+
+.dialogue {
+    color: #ffd700;
+    font-style: italic;
+    text-align: center;
+    font-size: 1.2rem !important;
+    text-indent: 0 !important;
+}
+
+.treasures-appear .treasure-desc {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 4px solid #ffd700;
+    border-radius: 5px;
+}
+
+.treasure-name {
+    color: #87ceeb;
+    font-weight: bold;
+}
+
+.visions {
+    list-style: none;
+    padding-left: 2rem;
+}
+
+.visions li {
+    margin: 0.8rem 0;
+    position: relative;
+}
+
+.visions li::before {
+    content: "✦";
+    color: #ffd700;
+    position: absolute;
+    left: -1.5rem;
+}
+
+.prophecies {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.prophecy {
+    background: rgba(255, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    text-align: center;
+}
+
+.symbol {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #ffd700;
+    color: #1a1a2e;
+    border-radius: 50%;
+    line-height: 40px;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.continue-btn, .back-btn {
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    border: 4px solid #000;
+    cursor: pointer;
+    font-family: 'Press Start 2P', 'Zpix', cursive;
+    font-size: 14px;
+    transition: var(--transition);
+    margin: 2rem auto 0;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 8px var(--accent-color);
+    text-shadow: 0 0 5px #fff;
+}
+
+.continue-btn::before, .back-btn::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid var(--accent-color);
+    z-index: -1;
+}
+
+.continue-btn::after, .back-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.continue-btn:hover, .back-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--secondary-color);
+}
+
+.continue-btn:hover::after, .back-btn:hover::after {
+    left: 100%;
+}
+
+.continue-btn:active, .back-btn:active {
+    transform: translateY(2px);
+}
+
+/* 法宝选择界面样式 */
+.treasures-screen {
+    padding: 3rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f0f1e, #16213e);
+}
+
+.treasures-title {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    letter-spacing: 2px;
+}
+
+.treasures-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin-bottom: 2rem;
+}
+
+.treasure-card {
+    background: rgba(15, 15, 30, 0.7);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.treasure-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.15);
+}
+
+.card-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.mirror-card {
+    background: linear-gradient(135deg, #5e9ece, #3a6d94);
+    box-shadow: 0 0 15px rgba(94, 158, 206, 0.4);
+}
+
+.banner-card {
+    background: linear-gradient(135deg, #e6c13f, #b38728);
+    box-shadow: 0 0 15px rgba(230, 193, 63, 0.4);
+}
+
+.seal-card {
+    background: linear-gradient(135deg, #c13e3e, #7a1f1f);
+    box-shadow: 0 0 15px rgba(193, 62, 62, 0.4);
+}
+
+.treasure-icon {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.treasure-card h3 {
+    font-size: 1.4rem;
+    color: #ffd700;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.card-desc {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    line-height: 1.5;
+}
+
+/* 法宝详情界面样式 */
+.treasure-detail {
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f0f1e, #16213e);
+}
+
+.detail-content {
+    background: rgba(15, 15, 30, 0.8);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#treasureName {
+    font-size: 2rem;
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    letter-spacing: 1px;
+}
+
+#treasureInfo {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #f0f0f0;
+}
+
+/* 记忆游戏界面样式 */
+.memory-game-screen {
+    padding: 2rem;
+    min-height: 100vh;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.game-header .game-title {
+    color: #FFB347 !important;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 28px !important;
+    text-transform: uppercase;
+    position: relative;
+    padding: 10px;
+    text-shadow: 3px 3px 0px #000;
+    letter-spacing: 2px;
+    animation: text-glow 2s ease-in-out infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.game-info {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 10px;
+    color: var(--accent-color);
+    width: 100%;
+    background-color: #000;
+    border: 2px solid var(--accent-color);
+    padding: 5px 10px;
+    flex-wrap: wrap;
+}
+
+.game-info > div {
+    background: transparent;
+    padding: 3px 0;
+    border: none;
+    border-radius: 0;
+    margin: 3px 0;
+    text-shadow: 1px 1px 0px #000;
+}
+
+.game-info span {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* 记忆卡片容器 */
+.memory-cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    width: 100%;
+    background-color: #483D8B; /* 暗紫罗兰色，与背景形成对比 */
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 20px var(--primary-color), inset 0 0 15px rgba(255, 107, 151, 0.3);
+    padding: 15px;
+    position: relative;
+}
+
+.memory-cards-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(to right, transparent 50%, rgba(255, 255, 255, 0.03) 50%),
+        linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.03) 50%);
+    background-size: 4px 4px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.memory-cards-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            to bottom,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.03) 2px,
+            rgba(255, 255, 255, 0.03) 4px
+        );
+    pointer-events: none;
+    z-index: 2;
+    animation: scanline 10s linear infinite;
+}
+
+@keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* 记忆卡片样式 */
+.memory-card {
+    width: 120px;
+    height: 160px;
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+    z-index: 3;
+}
+
+.memory-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.memory-card.matched {
+    cursor: default;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.memory-card.matched .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 4px solid var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color);
+    text-align: center;
+    padding: 0.5rem;
+    line-height: 1.2;
+    font-family: 'Press Start 2P', 'Zpix', cursive;
+    text-shadow: 2px 2px 0px #000;
+}
+
+.card-back {
+    font-size: 0px; /* 隐藏背面文字 */
+}
+
+.card-front {
+    font-size: 12px; /* 正面文字稍微放大 */
+}
+
+.card-back {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    background-image: url('../assets/images/cards/cardback.PNG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.card-front {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #ecf0f1;
+    transform: rotateY(180deg);
+}
+
+/* 确保未翻转的卡牌显示背面 */
+.memory-card:not(.flipped) .card-inner {
+    transform: rotateY(0deg);
+}
+
+/* 翻转后的卡牌显示正面 */
+.memory-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* A类卡片正面颜色样式 */
+.card-front.mirror-front {
+    background: linear-gradient(135deg, #5e9ece, #3a6d94);
+    background-image: url('../assets/images/cards/mirror.PNG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    position: relative;
+}
+
+.card-front.mirror-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.card-front.mirror-front .card-front-content {
+    position: relative;
+    z-index: 2;
+}
+
+.card-front.banner-front {
+    background: linear-gradient(135deg, #e6c13f, #b38728);
+    background-image: url('../assets/images/cards/flag.PNG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    position: relative;
+}
+
+.card-front.banner-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.card-front.banner-front .card-front-content {
+    position: relative;
+    z-index: 2;
+}
+
+.card-front.seal-front {
+    background: linear-gradient(135deg, #c13e3e, #7a1f1f);
+    background-image: url('../assets/images/cards/thunder.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    position: relative;
+}
+
+.card-front.seal-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.card-front.seal-front .card-front-content {
+    position: relative;
+    z-index: 2;
+}
+
+.card-front.ordinary-front {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+    color: white;
+}
+
+/* 游戏控制按钮 */
+.game-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.control-btn {
+    padding: 10px 20px;
+    border: 4px solid #000;
+    cursor: pointer;
+    font-family: 'Press Start 2P', 'Zpix', cursive;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+    letter-spacing: 0.5px;
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 0 5px #fff;
+}
+
+.control-btn::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+}
+
+.control-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.restart-btn {
+    background-color: var(--error-color);
+    color: white;
+    box-shadow: 0 0 8px var(--error-color);
+}
+
+.restart-btn::before {
+    border: 2px solid var(--error-color);
+}
+
+.restart-btn:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.restart-btn:hover::after {
+    left: 100%;
+}
+
+.restart-btn:active {
+    transform: translateY(2px);
+}
+
+/* 游戏法宝详情页面样式 */
+.game-treasure-detail {
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f0f1e, #16213e);
+}
+
+/* 游戏失败界面样式 */
+.game-failure-screen {
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a0000, #2d0000);
+}
+
+.failure-content {
+    background: rgba(139, 0, 0, 0.2);
+    border: 2px solid rgba(220, 20, 60, 0.5);
+    border-radius: 12px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    animation: failureAppear 0.4s ease;
+}
+
+@keyframes failureAppear {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.failure-title {
+    font-size: 2.5rem;
+    color: #dc143c;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+}
+
+.failure-content #failureMessage {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+}
+
+.failure-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 900px) {
+    .treasures-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 2.2rem;
+    }
+    
+    .story-content {
+        padding: 1.5rem;
+    }
+    
+    .story-title {
+        font-size: 1.8rem;
+    }
+    
+    .treasures-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    .treasures-title {
+        font-size: 1.8rem;
+    }
+    
+    .detail-content {
+        padding: 1.5rem;
+    }
+    
+    #treasureName {
+        font-size: 1.8rem;
+    }
+    
+    #treasureInfo {
+        font-size: 1rem;
+    }
+    
+    /* 记忆游戏移动端适配 */
+    .game-header .game-title {
+        font-size: 1.8rem;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        gap: 0.5rem;
+        font-size: 1rem;
+    }
+    
+    .memory-cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        max-width: 300px;
+    }
+    
+    .memory-card {
+        width: 80px;
+        height: 100px;
+    }
+    
+    .card-front, .card-back {
+        font-size: 1rem;
+    }
+    
+    .game-controls {
+        flex-direction: column;
+        gap: 0.8rem;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .control-btn {
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    .failure-content {
+        padding: 1.5rem;
+    }
+    
+    .failure-title {
+        font-size: 2rem;
+    }
+    
+    .failure-controls {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .failure-controls .control-btn {
+        width: 100%;
+    }
+}

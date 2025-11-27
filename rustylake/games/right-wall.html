@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迷宫探秘</title>
+    <link rel="stylesheet" href="../assets/css/right-wall.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="main-screen" id="mainScreen">
+            <h1 class="game-title">迷宫探秘</h1>
+            <div class="enter-btn" onclick="enterGame()">点击进入</div>
+        </div>
+        
+        <div class="story-screen hidden" id="storyScreen">
+            <div class="story-content">
+                <h2 class="story-title">朝歌幻市</h2>
+                
+                <div class="story-section">
+                    <p>一双沾满尘土的手，推开一扇被藤蔓半缠的斑驳木门，腐朽的门轴发出冗长的呻吟。手背上，几道淡蓝色的纹路在苍白的皮肤下一闪而过，旋即隐没。</p>
+                    <p>所谓的朝歌幻市，不过是比殷墟更破败的土坯建筑群。风化的夯土墙塌了半边，露出里面蓝紫色的骸骨与龟甲混筑的夹层，和集市搭不上半点关系。</p>
+                    <p>脚下是青石板路，缝隙间生着滑腻的深色苔藓。他走过的地方，苔藓上会留下一个个微弱的、带着焦痕的脚印，记录着他移动的轨迹。</p>
+                    <p>他驻足许久，想起云中子袖中的卦象，他的使命和<span style="color:#8a2be2;"><strong>十个奇怪的字符</strong></span>紧紧绑定，而打开命运之门的钥匙就应该出现在这市集中。</p>
+                    <p>凝神细听，能从地底深处捕捉到一种缓慢而沉重的轰鸣声......</p>
+                </div>
+                
+                <div class="story-section">
+                    <h3>游戏规则：</h3>
+                    <ul>
+                        <li>使用方向键或WASD控制角色移动（移动端可使用虚拟摇杆或重力感应）</li>
+                        <li>走出朝歌幻市</li>
+                    </ul>
+                </div>
+                
+                <div class="continue-btn" onclick="startMaze()">开始挑战</div>
+            </div>
+        </div>
+        
+        <div class="maze-screen hidden" id="mazeScreen">
+            <div class="game-header">
+                <div class="timer" id="timer">00:00</div>
+                <div class="key-status" id="keyStatus">未获得钥匙</div>
+                <button class="restart-btn" onclick="restartMaze()">重新开始</button>
+            </div>
+            
+            <div class="maze-container" id="mazeContainer">
+                <!-- 迷宫将通过JavaScript动态生成 -->
+            </div>
+            
+            <!-- 道具图例 -->
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-icon">🔑</div>
+                    <div class="legend-text">钥匙</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon">🚪</div>
+                    <div class="legend-text">终点</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon">🪜</div>
+                    <div class="legend-text">梯子</div>
+                </div>
+            </div>
+            
+            <!-- 下层迷宫描述 -->
+            <div class="lower-maze-description">
+                巴RUA废墟
+                <p>坠入的深渊底部，脚下传来骨骼碎裂的轻响。定睛看去，周身竟伏着无数枯骨。岩壁上镌刻着八个古篆，</p>
+                <p>“巴RUA雷墟，万法归藏”</p>
+                <p>此地原是殷商太卜观测雷象、推演天机之地，如今已成封印雷煞的险境。</p>
+                <p>十具宝箱传出低沉的“嗡——隆隆”​ 的共鸣，箱体幽光流转，表面夔纹如同活物般缓缓蠕动。</p>
+                <p>一具斜倚在宝箱旁的骸骨尤为触目——它指尖距箱体仅剩寸许，整条臂骨却已布满蛛网般的焦黑裂痕，颅骨仰望着穹顶，保持着生前最后一刻的渴望与绝望。</p>
+                <p>这些陨落的前人，都是未能通过考验的失败者......</p>
+            </div>
+            
+            <!-- 虚拟摇杆 -->
+            <div class="joystick-container" id="joystickContainer">
+                <div class="joystick-base">
+                    <div class="joystick-stick" id="joystickStick"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="result-screen hidden" id="resultScreen">
+            <div class="result-content">
+                <h2 id="resultTitle"></h2>
+                <p id="resultMessage"></p>
+                <div class="result-stats">
+                    <div class="stat">用时: <span id="timeSpent"></span></div>
+                </div>
+                <div class="result-buttons">
+                    <button class="result-btn" onclick="restartMaze()">再试一次</button>
+                    <button class="result-btn" onclick="completeGame()">完成挑战</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../assets/js/right-wall.js"></script>
+</body>
+</html>

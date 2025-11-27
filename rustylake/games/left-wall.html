@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Impossible - 量化策略的不可能三角挑战</title>
+    <link rel="stylesheet" href="../assets/css/left-wall.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 游戏标题 -->
+        <div class="game-header">
+            <h1>Triangle Impossible</h1>
+            <p class="subtitle">量化策略的不可能三角挑战</p>
+            <button class="back-btn" onclick="goBack()">← 返回房间</button>
+        </div>
+
+        <!-- 游戏说明 -->
+        <div class="instructions" id="instructions">
+            <div class="instruction-content">
+                <h3>🎯 量劫平衡纪</h3>
+                <p>太古之初，天道运行，衍生万界财富之气。然至殷商末年，一场封神量劫，虽重定了神界秩序，却也导致维系三界的核心——​“财富天道”​​ 剧烈震荡，濒临崩溃。</p>
+                <p>这“财富天道”本由三大先天教派共同维系：</p>
+                <p><strong>阐教 - 守正之盾：​</strong> 教主元始天尊，执掌 ​​“低波动”之道。阐教门人修行稳健，能于市场劫波中辟开静土，​守护本金不遭巨大侵蚀。然其道法进境缓慢，于大机缘前往往固步自封。</p>
+                <p><strong>截教 - 戮锐之剑：​​</strong> 教主通天教主，执掌 ​​“高收益”之道。截教有教无类，门人法术凌厉凶悍，能于万界中截取一线天机，博取超额回报。然其道法霸道无常，极易反噬自身，道基倾覆。</p> 
+                <p><strong>人道 - 王道之基：​​</strong> 教主姜子牙，执掌 ​​“大容量”之道。人道以仁为本，能于万界中广施仁政，​汇聚民心，形成强大的民意基础。然其道法迂回，难以在短期内取得成效。</p>
+                </p><strong>高收益、低波动、大容量</strong>三者无法同时实现。</p>
+                <p>你要拖动三颗钉子来调整策略参数，实现你的投资目标！_ _ _ _ _ _ _ _ _ n c _</p>
+                
+                <h3>🎮 游戏规则</h3>
+                <ul>
+                    <li>三个钉子分别代表高收益、低波动、大容量</li>
+                    <li>每个钉子只能在对应的直线轨道上移动</li>
+                    <li>圆心为0分，最外圈为100分</li>
+                    <li>你的得分是多少？分享你的投资参数吧！</li>
+                </ul>
+                
+                <button class="start-btn" onclick="startGame()">开始挑战</button>
+            </div>
+        </div>
+
+        <!-- 游戏主界面 -->
+        <div class="game-board" id="gameBoard" style="display: none;">
+            <!-- 游戏状态栏 -->
+            <div class="game-status">
+                <div class="score-display">
+                    <span>当前得分: <span id="currentScore">0</span></span>
+                    <span>目标得分: <span id="targetScore">75</span></span>
+                </div>
+            </div>
+
+            <!-- 圆形评价板 -->
+            <div class="evaluation-board">
+                <svg class="board-svg" width="400" height="400" viewBox="0 0 400 400">
+                    <!-- 背景圆圈 -->
+                    <circle cx="200" cy="200" r="180" fill="none" stroke="#333" stroke-width="2" opacity="0.3"/>
+                    <circle cx="200" cy="200" r="150" fill="none" stroke="#555" stroke-width="1" opacity="0.5"/>
+                    <circle cx="200" cy="200" r="120" fill="none" stroke="#777" stroke-width="1" opacity="0.5"/>
+                    <circle cx="200" cy="200" r="90" fill="none" stroke="#999" stroke-width="1" opacity="0.5"/>
+                    <circle cx="200" cy="200" r="60" fill="none" stroke="#aaa" stroke-width="1" opacity="0.5"/>
+                    <circle cx="200" cy="200" r="30" fill="none" stroke="#bbb" stroke-width="1" opacity="0.5"/>
+                    
+                    <!-- 三条轨道线 -->
+                    <line x1="200" y1="200" x2="200" y2="20" stroke="#FF6B6B" stroke-width="3" opacity="0.6"/>
+                    <line x1="200" y1="200" x2="355.88" y2="304" stroke="#4ECDC4" stroke-width="3" opacity="0.6"/>
+                    <line x1="200" y1="200" x2="44.12" y2="304" stroke="#45B7D1" stroke-width="3" opacity="0.6"/>
+                    
+                    <!-- 标签 -->
+                    <text x="200" y="15" text-anchor="middle" class="sector-label" fill="#FF6B6B">高收益</text>
+                    <text x="370" y="320" text-anchor="middle" class="sector-label" fill="#4ECDC4">大容量</text>
+                    <text x="30" y="320" text-anchor="middle" class="sector-label" fill="#45B7D1">低波动</text>
+                    
+                    <!-- 分数标记 -->
+                    <text x="200" y="50" text-anchor="middle" class="score-label">90</text>
+                    <text x="200" y="80" text-anchor="middle" class="score-label">70</text>
+                    <text x="200" y="110" text-anchor="middle" class="score-label">50</text>
+                    <text x="200" y="140" text-anchor="middle" class="score-label">30</text>
+                    <text x="200" y="170" text-anchor="middle" class="score-label">10</text>
+                    <text x="205" y="205" text-anchor="start" class="score-label">0</text>
+                    
+                    <!-- 三角形 -->
+                    <polygon id="triangle" points="200,164 236,236 164,236" 
+                             fill="rgba(255, 215, 0, 0.3)" 
+                             stroke="#FFD700" 
+                             stroke-width="3"/>
+                    
+                    <!-- 三个可拖动的钉子 -->
+                    <circle id="pin1" cx="200" cy="164" r="8" fill="#FF6B6B" stroke="#fff" stroke-width="2" class="draggable-pin"/>
+                    <circle id="pin2" cx="236" cy="236" r="8" fill="#4ECDC4" stroke="#fff" stroke-width="2" class="draggable-pin"/>
+                    <circle id="pin3" cx="164" cy="236" r="8" fill="#45B7D1" stroke="#fff" stroke-width="2" class="draggable-pin"/>
+                    
+                    <!-- 钉子标签已移除 -->
+                </svg>
+            </div>
+
+            <!-- 参数显示面板 -->
+            <div class="parameter-panel">
+                <div class="param-item">
+                    <span class="param-label">高收益:</span>
+                    <span id="returnValue" class="param-value">20</span>
+                </div>
+                <div class="param-item">
+                    <span class="param-label">大容量:</span>
+                    <span id="liquidityValue" class="param-value">20</span>
+                </div>
+                <div class="param-item">
+                    <span class="param-label">低波动:</span>
+                    <span id="riskValue" class="param-value">20</span>
+                </div>
+            </div>
+
+            <!-- 游戏控制按钮 -->
+            <div class="game-controls">
+                <button class="control-btn" onclick="resetGame()">重置</button>
+                <button class="control-btn" onclick="showInstructions()">说明</button>
+                <button class="control-btn" onclick="submitResult()" id="submitBtn" disabled>提交结果</button>
+            </div>
+
+            <!-- 结果显示区域 -->
+            <div class="result-display" id="resultDisplay" style="display: none;">
+                <div class="result-content">
+                    <h2>🎉 挑战成功！</h2>
+                    <div class="result-params">
+                        <div class="result-param">
+                            <span class="result-label">高收益:</span>
+                            <span id="resultReturn" class="result-value">0</span>
+                        </div>
+                        <div class="result-param">
+                            <span class="result-label">大容量:</span>
+                            <span id="resultLiquidity" class="result-value">0</span>
+                        </div>
+                        <div class="result-param">
+                            <span class="result-label">低波动:</span>
+                            <span id="resultRisk" class="result-value">0</span>
+                        </div>
+                        <div class="result-param">
+                            <span class="result-label">最终得分:</span>
+                            <span id="resultScore" class="result-value">0</span>
+                        </div>
+                    </div>
+                    <div class="result-message" id="resultMessage">
+                        你成功掌握了量化策略的平衡艺术！
+                    </div>
+                    
+                    <!-- 分享区域 -->
+                    <div class="share-section">
+                        <p class="share-text">_ _ _ _ _ _ _ _ _ n c _ 把你的结果分享给你的好友吧！要不要再来一把？可能会得到不同的评价~</p>
+                        <img class="share-qr" src="../assets/wechat.jpg" alt="微信二维码">
+                    </div>
+                    
+                    <button class="result-btn" onclick="completeChallenge()">完成挑战</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/left-wall.js"></script>
+</body>
+</html>

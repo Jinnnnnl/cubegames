@@ -1,0 +1,20 @@
+{
+  "path": "c:\\Users\\win\\codebuddy\\rustylake",
+  "desc": "这是一个密室逃脱游戏项目，包含六面体房间的谜题解密游戏，其中包括封神战力榜单监督管理暂行办法和法宝争夺战等谜题。",
+  "id": "4dc8b58f11fd486389bf459078b74e43",
+  "data": {
+    "spaceKey": "4dc8b58f11fd486389bf459078b74e43",
+    "connections": {
+      "webIDE": "https://4dc8b58f11fd486389bf459078b74e43.ap-singapore.cloudstudio.club",
+      "preview": "",
+      "api": "https://4dc8b58f11fd486389bf459078b74e43--api.ap-singapore.cloudstudio.club",
+      "pty": "https://4dc8b58f11fd486389bf459078b74e43--pty.ap-singapore.cloudstudio.club"
+    }
+  },
+  "config": {
+    "api": "https://4dc8b58f11fd486389bf459078b74e43--api.ap-singapore.cloudstudio.club",
+    "pty": "https://4dc8b58f11fd486389bf459078b74e43--pty.ap-singapore.cloudstudio.club",
+    "region": "ap-shanghai",
+    "spaceKey": "4dc8b58f11fd486389bf459078b74e43"
+  }
+}
