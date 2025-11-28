@@ -368,8 +368,8 @@ function enterTreasureDetailFromChest(treasureType) {
             treasureIntro = `
                 <div class="treasure-detail-content">
                     <div class="treasure-images">
-                        <img src="../assets/images/cards/yuyao2.jpg" alt="天瑜瑶光镜" class="treasure-img" onclick="enlargeImageGallery(this, 'mirror')" style="max-width: 150px; max-height: 120px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <img src="../assets/images/cards/yuyao3.jpg" alt="天瑜瑶光镜" class="treasure-img" onclick="enlargeImageGallery(this, 'mirror')" style="max-width: 150px; max-height: 120px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="/assets/images/cards/yuyao2.jpg" alt="天瑜瑶光镜" class="treasure-img" onclick="enlargeImageGallery(this, 'mirror')" style="max-width: 150px; max-height: 120px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="/assets/images/cards/yuyao3.jpg" alt="天瑜瑶光镜" class="treasure-img" onclick="enlargeImageGallery(this, 'mirror')" style="max-width: 150px; max-height: 120px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
 
                     </div>
                     <div class="treasure-description">
@@ -458,11 +458,11 @@ function enterTreasureDetailFromChest(treasureType) {
             treasureIntro = `
                 <div class="treasure-detail-content">
                     <div class="treasure-images" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-                        <img src="../assets/images/cards/ruifengda1.jpg" alt="瑞穗丰达幡" class="treasure-img" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <img src="../assets/images/cards/ruifengda3.jpg" alt="瑞穗丰达幡" class="treasure-img" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <img src="../assets/images/cards/ruifengda4.jpg" alt="瑞穗丰达幡" class="treasure-img" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <img src="../assets/images/cards/ruifengda5.jpg" alt="瑞穗丰达幡" class="treasure-img" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <img src="../assets/images/cards/ruifengda6.jpg" alt="瑞穗丰达幡" class="treasure-img" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="/assets/images/cards/ruifengda1.jpg" alt="瑞穗丰达幡" class="treasure-img" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="/assets/images/cards/ruifengda3.jpg" alt="瑞穗丰达幡" class="treasure-img" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="/assets/images/cards/ruifengda4.jpg" alt="瑞穗丰达幡" class="treasure-img" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="/assets/images/cards/ruifengda5.jpg" alt="瑞穗丰达幡" class="treasure-img" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="/assets/images/cards/ruifengda6.jpg" alt="瑞穗丰达幡" class="treasure-img" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
                     <div class="treasure-description">
                         <h3>玄门保本圣幡</h3>
@@ -550,11 +550,11 @@ function enterTreasureDetailFromChest(treasureType) {
             treasureIntro = `
                 <div class="treasure-detail-content">
                     <div class="treasure-images" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-                        <img src="../assets/images/cards/lei1.jpg" alt="雷煞根源印" class="treasure-img" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <img src="../assets/images/cards/lei2.jpg" alt="雷煞根源印" class="treasure-img" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <img src="../assets/images/cards/lei3.jpg" alt="雷煞根源印" class="treasure-img" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <img src="../assets/images/cards/lei4.jpg" alt="雷煞根源印" class="treasure-img" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <img src="../assets/images/cards/lei5.jpg" alt="雷煞根源印" class="treasure-img" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="/assets/images/cards/lei1.jpg" alt="雷煞根源印" class="treasure-img" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="/assets/images/cards/lei2.jpg" alt="雷煞根源印" class="treasure-img" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="/assets/images/cards/lei3.jpg" alt="雷煞根源印" class="treasure-img" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="/assets/images/cards/lei4.jpg" alt="雷煞根源印" class="treasure-img" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src=\"/assets/images/cards/lei5.jpg\" alt="雷煞根源印" class="treasure-img" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
                     <div class="treasure-description">
                         <h3>天庭雷部至宝</h3>
@@ -907,9 +907,9 @@ function showTreasureDetail(treasureType) {
             infoElement.innerHTML = `
                 <div class="treasure-detail-content">
                     <div class="treasure-images">
-                        <img src="../assets/images/cards/yuyao2.jpg" alt="天瑜瑶光镜" class="treasure-img" data-treasure="mirror" onclick="enlargeImageGallery(this, 'mirror')" style="max-width: 150px; max-height: 120px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/yuyao3.jpg" alt="天瑜瑶光镜" class="treasure-img" data-treasure="mirror" onclick="enlargeImageGallery(this, 'mirror')" style="max-width: 150px; max-height: 120px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/yuyao3.jpg" alt="天瑜瑶光镜" class="treasure-img" data-treasure="mirror" onclick="enlargeImageGallery(this, 'mirror')" style="max-width: 150px; max-height: 120px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/yuyao2.jpg" alt="天瑜瑶光镜" class="treasure-img" data-treasure="mirror" onclick="enlargeImageGallery(this, 'mirror')" style="max-width: 150px; max-height: 120px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/yuyao3.jpg" alt="天瑜瑶光镜" class="treasure-img" data-treasure="mirror" onclick="enlargeImageGallery(this, 'mirror')" style="max-width: 150px; max-height: 120px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/yuyao3.jpg" alt="天瑜瑶光镜" class="treasure-img" data-treasure="mirror" onclick="enlargeImageGallery(this, 'mirror')" style="max-width: 150px; max-height: 120px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
                     </div>
                     <div class="treasure-description">
                         <h3>仙界第一净光宝镜</h3>
@@ -998,15 +998,15 @@ function showTreasureDetail(treasureType) {
             infoElement.innerHTML = `
                 <div class="treasure-detail-content">
                     <div class="treasure-images">
-                        <img src="../assets/images/cards/ruifengda1.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/ruifengda3.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/ruifengda4.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/ruifengda5.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/ruifengda6.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/ruifengda3.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/ruifengda4.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/ruifengda5.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/ruifengda6.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/ruifengda1.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/ruifengda3.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/ruifengda4.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/ruifengda5.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/ruifengda6.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/ruifengda3.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/ruifengda4.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/ruifengda5.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/ruifengda6.jpg" alt="玄门保本圣幡" class="treasure-img" data-treasure="banner" onclick="enlargeImageGallery(this, 'banner')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
                     </div>
                     <div class="treasure-description">
                         <h3>玄门保本圣幡</h3>
@@ -1095,15 +1095,15 @@ function showTreasureDetail(treasureType) {
             infoElement.innerHTML = `
                 <div class="treasure-detail-content">
                     <div class="treasure-images">
-                        <img src="../assets/images/cards/lei1.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/lei2.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/lei3.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/lei4.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/lei5.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/lei2.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/lei3.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/lei4.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
-                        <img src="../assets/images/cards/lei5.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/lei1.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/lei2.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/lei3.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/lei4.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src=\"/assets/images/cards/lei5.jpg\" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/lei2.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/lei3.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src="/assets/images/cards/lei4.jpg" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
+                        <img src=\"/assets/images/cards/lei5.jpg\" alt="雷煞根源印" class="treasure-img" data-treasure="seal" onclick="enlargeImageGallery(this, 'seal')" style="max-width: 120px; max-height: 100px; object-fit: contain; margin: 5px; border: 2px solid #ffd700; border-radius: 4px; cursor: pointer;">
                     </div>
                     <h3>天庭雷部至宝</h3>
                     <p>根源护持​：使用者可借天道雷力护体，号称"万劫不破"，签订​"雷劫回购协议"​——若印主受损，天庭必以雷部真灵补偿。</p>
@@ -1376,22 +1376,22 @@ function hideScreen(screenId) {
 // 图片画廊数据
 const treasureImageGalleries = {
     mirror: [
-        { src: '../assets/images/cards/yuyao2.jpg', alt: '天瑜瑶光镜 - 图1' },
-        { src: '../assets/images/cards/yuyao3.jpg', alt: '天瑜瑶光镜 - 图2' }
+        { src: '/assets/images/cards/yuyao2.jpg', alt: '天瑜瑶光镜 - 图1' },
+        { src: '/assets/images/cards/yuyao3.jpg', alt: '天瑜瑶光镜 - 图2' }
     ],
     banner: [
-        { src: '../assets/images/cards/ruifengda1.jpg', alt: '瑞穗丰达幡 - 图1' },
-        { src: '../assets/images/cards/ruifengda3.jpg', alt: '瑞穗丰达幡 - 图2' },
-        { src: '../assets/images/cards/ruifengda4.jpg', alt: '瑞穗丰达幡 - 图3' },
-        { src: '../assets/images/cards/ruifengda5.jpg', alt: '瑞穗丰达幡 - 图4' },
-        { src: '../assets/images/cards/ruifengda6.jpg', alt: '瑞穗丰达幡 - 图5' }
+        { src: '/assets/images/cards/ruifengda1.jpg', alt: '瑞穗丰达幡 - 图1' },
+        { src: '/assets/images/cards/ruifengda3.jpg', alt: '瑞穗丰达幡 - 图2' },
+        { src: '/assets/images/cards/ruifengda4.jpg', alt: '瑞穗丰达幡 - 图3' },
+        { src: '/assets/images/cards/ruifengda5.jpg', alt: '瑞穗丰达幡 - 图4' },
+        { src: '/assets/images/cards/ruifengda6.jpg', alt: '瑞穗丰达幡 - 图5' }
     ],
     seal: [
-        { src: '../assets/images/cards/lei1.jpg', alt: '雷煞根源印 - 图1' },
-        { src: '../assets/images/cards/lei2.jpg', alt: '雷煞根源印 - 图2' },
-        { src: '../assets/images/cards/lei3.jpg', alt: '雷煞根源印 - 图3' },
-        { src: '../assets/images/cards/lei4.jpg', alt: '雷煞根源印 - 图4' },
-        { src: '../assets/images/cards/lei5.jpg', alt: '雷煞根源印 - 图5' }
+        { src: '/assets/images/cards/lei1.jpg', alt: '雷煞根源印 - 图1' },
+        { src: '/assets/images/cards/lei2.jpg', alt: '雷煞根源印 - 图2' },
+        { src: '/assets/images/cards/lei3.jpg', alt: '雷煞根源印 - 图3' },
+        { src: '/assets/images/cards/lei4.jpg', alt: '雷煞根源印 - 图4' },
+        { src: '/assets/images/cards/lei5.jpg', alt: '雷煞根源印 - 图5' }
     ]
 };
 
@@ -1457,73 +1457,20 @@ function enlargeImageGallery(img, treasureType) {
     const prevBtn = document.createElement('div');
     prevBtn.className = 'gallery-nav-btn gallery-prev-btn';
     prevBtn.innerHTML = '‹';
-    prevBtn.style.cssText = `
-        position: absolute;
-        left: -60px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 50px;
-        height: 50px;
-        background: rgba(255, 215, 0, 0.8);
-        color: #000;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 30px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        user-select: none;
-    `;
+    
     prevBtn.onclick = () => navigateGallery(-1);
     
     const nextBtn = document.createElement('div');
     nextBtn.className = 'gallery-nav-btn gallery-next-btn';
     nextBtn.innerHTML = '›';
-    nextBtn.style.cssText = `
-        position: absolute;
-        right: -60px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 50px;
-        height: 50px;
-        background: rgba(255, 215, 0, 0.8);
-        color: #000;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 30px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        user-select: none;
-    `;
+    
     nextBtn.onclick = () => navigateGallery(1);
     
     // 创建关闭按钮
     const closeBtn = document.createElement('div');
     closeBtn.className = 'gallery-close-btn';
     closeBtn.innerHTML = '×';
-    closeBtn.style.cssText = `
-        position: absolute;
-        top: -60px;
-        right: -60px;
-        width: 50px;
-        height: 50px;
-        background: rgba(255, 0, 0, 0.8);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 30px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        user-select: none;
-    `;
+    
     closeBtn.onclick = closeImageGallery;
     
     // 创建图片计数器
@@ -1739,8 +1686,8 @@ function showTrueVictory() {
                     天瑜瑶光镜 - 真实奥秘
                 </h2>
                 <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; justify-content: center;">
-                    <img src="../assets/images/cards/yuyao2.jpg" alt="天瑜瑶光镜" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
-                    <img src="../assets/images/cards/yuyao3.jpg" alt="天瑜瑶光镜" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
+                    <img src="/assets/images/cards/yuyao2.jpg" alt="天瑜瑶光镜" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
+                    <img src="/assets/images/cards/yuyao3.jpg" alt="天瑜瑶光镜" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
                 </div>
                 <p style="font-size: 12px; line-height: 1.6; color: #e0e0e0;">
                     三界最大造假法宝，镜光可扭曲现实认知，让观测者看到持有者想让他们看到的"完美假象"；
@@ -1754,11 +1701,11 @@ function showTrueVictory() {
                     玄门保本圣幡 - 真实奥秘
                 </h2>
                 <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; justify-content: center;">
-                    <img src="../assets/images/cards/ruifengda1.jpg" alt="瑞穗丰达幡" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
-                    <img src="../assets/images/cards/ruifengda3.jpg" alt="瑞穗丰达幡" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
-                    <img src="../assets/images/cards/ruifengda4.jpg" alt="瑞穗丰达幡" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
-                    <img src="../assets/images/cards/ruifengda5.jpg" alt="瑞穗丰达幡" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
-                    <img src="../assets/images/cards/ruifengda6.jpg" alt="瑞穗丰达幡" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
+                    <img src="/assets/images/cards/ruifengda1.jpg" alt="瑞穗丰达幡" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
+                    <img src="/assets/images/cards/ruifengda3.jpg" alt="瑞穗丰达幡" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
+                    <img src="/assets/images/cards/ruifengda4.jpg" alt="瑞穗丰达幡" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
+                    <img src="/assets/images/cards/ruifengda5.jpg" alt="瑞穗丰达幡" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
+                    <img src="/assets/images/cards/ruifengda6.jpg" alt="瑞穗丰达幡" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
                 </div>
                 <p style="font-size: 12px; line-height: 1.6; color: #e0e0e0;">
                     在幡面歃血为盟，幡面金穗纹可自动生成"功德护盾"，受攻击时发出"北蔡之光"，号称"万劫不破"。
@@ -1772,11 +1719,11 @@ function showTrueVictory() {
                     雷煞根源印 - 真实奥秘
                 </h2>
                 <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; justify-content: center;">
-                    <img src="../assets/images/cards/lei1.jpg" alt="雷煞根源印" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
-                    <img src="../assets/images/cards/lei2.jpg" alt="雷煞根源印" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
-                    <img src="../assets/images/cards/lei3.jpg" alt="雷煞根源印" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
-                    <img src="../assets/images/cards/lei4.jpg" alt="雷煞根源印" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
-                    <img src="../assets/images/cards/lei5.jpg" alt="雷煞根源印" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
+                    <img src="/assets/images/cards/lei1.jpg" alt="雷煞根源印" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
+                    <img src="/assets/images/cards/lei2.jpg" alt="雷煞根源印" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
+                    <img src="/assets/images/cards/lei3.jpg" alt="雷煞根源印" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
+                    <img src="/assets/images/cards/lei4.jpg" alt="雷煞根源印" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
+                    <img src=\"/assets/images/cards/lei5.jpg\" alt="雷煞根源印" style="max-width: 120px; max-height: 100px; object-fit: contain; border: 2px solid #ffd700; border-radius: 5px;">
                 </div>
                 <p style="font-size: 12px; line-height: 1.6; color: #e0e0e0;">
                     心魔根源印，并非掌控雷电，而是专门于九龙"打新"，打新补旧，积累天道怨气为己用，
@@ -1785,14 +1732,14 @@ function showTrueVictory() {
             </div>
             
             <div style="text-align: center; margin-top: 40px;">
-                <div style=\"font-size: 14px; color: #00ffff; margin-bottom: 20px;\">
+                <div style="font-size: 14px; color: #00ffff; margin-bottom: 20px;">
                     <p>雾里看花 水中望月，</p>
                     <p>借你借你一双慧眼吧，</p>
                     <p>让你把这法宝，</p>
                     <p>看个清清楚楚 明明白白 真真切切!</p>
                 </div>
-                <img src=\"../assets/wechat.jpg\" alt=\"wechat\" style=\"width: 150px; height: 150px; display: block; margin: 20px auto;\">
-                <p style=\"font-size: 14px; color: #e0e0e0; text-align: center;\">_ _ a _ _ _ a _ _ _ _ _ ,截图分享给好友，让他们也来挑战吧！</p>
+                <img src="../assets/wechat.jpg" alt="wechat" style="width: 150px; height: 150px; display: block; margin: 20px auto;">
+                <p style="font-size: 14px; color: #e0e0e0; text-align: center;">_ _ a _ _ _ a _ _ _ _ _ ,截图分享给好友，让他们也来挑战吧！</p>
                 <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
                     <button onclick="restartGame()" style="
                         padding: 15px 30px;
