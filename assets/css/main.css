@@ -231,7 +231,7 @@ body::before {
 
 /* 各个墙面位置 - 修正立方体构建 */
 .front-wall {
-    background-image: url('../../../assets/cards/cover/front.PNG');
+    background-image: url('../cards/cover/front.PNG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -239,7 +239,7 @@ body::before {
 }
 
 .back-wall {
-    background-image: url('../../../assets/cards/cover/back.PNG');
+    background-image: url('../cards/cover/back.PNG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -247,7 +247,7 @@ body::before {
 }
 
 .left-wall {
-    background-image: url('../../../assets/cards/cover/left.PNG');
+    background-image: url('../cards/cover/left.PNG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -255,7 +255,7 @@ body::before {
 }
 
 .right-wall {
-    background-image: url('../../../assets/cards/cover/right.PNG');
+    background-image: url('../cards/cover/right.PNG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -263,7 +263,7 @@ body::before {
 }
 
 .top-wall {
-    background-image: url('../../../assets/cards/cover/up.PNG');
+    background-image: url('../cards/cover/up.PNG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -271,7 +271,7 @@ body::before {
 }
 
 .bottom-wall {
-    background-image: url('../../../assets/cards/cover/down.PNG');
+    background-image: url('../cards/cover/down.PNG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
