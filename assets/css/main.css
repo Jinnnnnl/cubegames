@@ -182,10 +182,8 @@ body::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80vw;
-    height: 80vw;
-    max-width: 400px;
-    max-height: 400px;
+    width: 400px;
+    height: 400px;
     transform-style: preserve-3d;
     perspective: 1000px;
     /* 移动端触摸优化 */
@@ -206,10 +204,8 @@ body::before {
 
 .wall {
     position: absolute;
-    width: 80vw;
-    height: 80vw;
-    max-width: 400px;
-    max-height: 400px;
+    width: 400px;
+    height: 400px;
     border: 2px solid #34495e;
     display: flex;
     flex-direction: column;
@@ -235,51 +231,51 @@ body::before {
 
 /* 各个墙面位置 - 修正立方体构建 */
 .front-wall {
-    background-image: url('../cards/cover/front.PNG');
+    background-image: url('../images/walls/front.PNG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: rotateY(0deg) translateZ(40vw);
+    transform: rotateY(0deg) translateZ(200px);
 }
 
 .back-wall {
-    background-image: url('../cards/cover/back.PNG');
+    background-image: url('../images/walls/back.PNG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: rotateY(180deg) translateZ(40vw);
+    transform: rotateY(180deg) translateZ(200px);
 }
 
 .left-wall {
-    background-image: url('../cards/cover/left.PNG');
+    background-image: url('../images/walls/left.PNG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: rotateY(-90deg) translateZ(40vw);
+    transform: rotateY(-90deg) translateZ(200px);
 }
 
 .right-wall {
-    background-image: url('../cards/cover/right.PNG');
+    background-image: url('../images/walls/right.PNG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: rotateY(90deg) translateZ(40vw);
+    transform: rotateY(90deg) translateZ(200px);
 }
 
 .top-wall {
-    background-image: url('../cards/cover/up.PNG');
+    background-image: url('../images/walls/up.PNG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: rotateX(90deg) translateZ(40vw);
+    transform: rotateX(90deg) translateZ(200px);
 }
 
 .bottom-wall {
-    background-image: url('../cards/cover/down.PNG');
+    background-image: url('../images/walls/down.PNG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: rotateX(-90deg) translateZ(40vw);
+    transform: rotateX(-90deg) translateZ(200px);
 }
 
 /* 机关样式 */
@@ -856,3 +852,56 @@ body::before {
 }
 
 /* 响应式设计 */
+
+/* 移动端提示样式 */
+#mobile-warning-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#mobile-warning-modal {
+    background: rgba(44, 62, 80, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 30px 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    max-width: 90%;
+    width: 400px;
+    transform: scale(1);
+    transition: transform 0.5s ease;
+}
+
+#mobile-warning-modal h2 {
+    margin-bottom: 20px;
+    color: #f1c40f;
+    font-size: 24px;
+}
+
+#mobile-warning-modal p {
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#mobile-warning-overlay.hidden {
+    display: none;
+}
+
+#mobile-warning-overlay.hidden #mobile-warning-modal {
+    transform: scale(0.9);
+}

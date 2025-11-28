@@ -1,6 +1,7 @@
 let currentWall = 'front';
 let solvedPuzzles = new Set();
 let gameStartTime = Date.now();
+let isAnimating = false; // 新增：用于防止动画期间的重复操作
 
 // 立即初始化函数绑定
 (function() {
@@ -29,7 +30,9 @@ function initGame() {
 
 // 旋转到指定墙面
 function rotateTo(wall) {
+    if (isAnimating) return; // 如果正在播放动画，则不执行任何操作
     console.log('rotateTo called with wall:', wall); // 调试日志
+    isAnimating = true; // 开始动画
     currentWall = wall;
     const room = document.getElementById('room');
     
@@ -43,6 +46,11 @@ function rotateTo(wall) {
     };
     
     room.style.transform = rotations[wall];
+
+    // 动画结束后解锁
+    setTimeout(() => {
+        isAnimating = false;
+    }, 1000); // 动画时长为1秒
 }
 
 // 确保函数在全局作用域中可用
@@ -541,6 +549,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 触摸开始
     roomContainer.addEventListener('touchstart', function(e) {
+        if (isAnimating) return; // 动画期间不允许拖动
         // 只处理单点触控
         if (e.touches.length !== 1) return;
         

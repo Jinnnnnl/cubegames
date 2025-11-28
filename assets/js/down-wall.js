@@ -174,7 +174,7 @@ class FoxTailGame {
         if (backToMenuBtn) {
             backToMenuBtn.addEventListener('click', () => {
                 // 像素风格返回首页
-                window.location.href = '/rustylake/index.html';
+                window.close();
             });
         }
 
@@ -971,7 +971,7 @@ class FoxTailGame {
     backToMenu() {
         document.getElementById('resultModal').classList.remove('show');
         // 跳转到首页 index.html（像素风格按钮行为）
-        window.location.href = '/rustylake/index.html';
+        window.close();
     }
 }
 

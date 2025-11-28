@@ -106,7 +106,16 @@
         </div>
     </div>
 
-    <script src="assets/js/main.js"></script>
+        <!-- 移动端提示 -->
+        <div id="mobile-warning-overlay">
+            <div id="mobile-warning-modal">
+                <h2>温馨提示</h2>
+                <p>本游戏未对移动设备做优化，<br>请在电脑网页上进行测试。</p>
+                <button id="mobile-warning-close-btn" class="solve-btn" onclick="document.getElementById('mobile-warning-overlay').style.display='none'">我明白了</button>
+            </div>
+        </div>
+
+    <script src=\"assets/js/main.js\"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const correctKey = 'transparency';

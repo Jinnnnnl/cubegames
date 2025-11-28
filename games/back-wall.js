@@ -1890,10 +1890,5 @@ function returnToRoom() {
     }
     
     // 关闭当前窗口，返回主房间
-    if (window.parent && window.parent !== window) {
-        window.close();
-    } else {
-        // 如果不是在新窗口中打开的，直接跳转回主页面
-        window.location.href = '../index.html';
-    }
+    window.close();
 }

@@ -1501,7 +1501,7 @@ function completeGame() {
             <h2 class=\"success-title\">恭喜你成功通关！</h2>
             <p>${completionMessage}</p>
             <img src=\"../assets/wechat.jpg\" alt=\"wechat\" style=\"width: 150px; height: 150px; display: block; margin: 20px auto 10px;\">
-            <p style=\"font-size: 14px; text-align: center;\">_ _ _ _ _ _ _ _ e _ _ y,截图分享给好友，看看他们能否走出迷宫？</p>
+            <p style=\"font-size: 14px; text-align: center;\">截图分享给好友，看看他们能否走出迷宫？</p>
             <div class=\"result-stats\">
                 <div class=\"stat\">用时: ${formatTime(gameTime)}</div>
             </div>
