@@ -182,8 +182,10 @@ body::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
+    width: 80vw;
+    height: 80vw;
+    max-width: 400px;
+    max-height: 400px;
     transform-style: preserve-3d;
     perspective: 1000px;
     /* 移动端触摸优化 */
@@ -204,8 +206,10 @@ body::before {
 
 .wall {
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: 80vw;
+    height: 80vw;
+    max-width: 400px;
+    max-height: 400px;
     border: 2px solid #34495e;
     display: flex;
     flex-direction: column;
@@ -235,7 +239,7 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: rotateY(0deg) translateZ(200px);
+    transform: rotateY(0deg) translateZ(40vw);
 }
 
 .back-wall {
@@ -243,7 +247,7 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: rotateY(180deg) translateZ(200px);
+    transform: rotateY(180deg) translateZ(40vw);
 }
 
 .left-wall {
@@ -251,7 +255,7 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: rotateY(-90deg) translateZ(200px);
+    transform: rotateY(-90deg) translateZ(40vw);
 }
 
 .right-wall {
@@ -259,7 +263,7 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: rotateY(90deg) translateZ(200px);
+    transform: rotateY(90deg) translateZ(40vw);
 }
 
 .top-wall {
@@ -267,7 +271,7 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: rotateX(90deg) translateZ(200px);
+    transform: rotateX(90deg) translateZ(40vw);
 }
 
 .bottom-wall {
@@ -275,7 +279,7 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: rotateX(-90deg) translateZ(200px);
+    transform: rotateX(-90deg) translateZ(40vw);
 }
 
 /* 机关样式 */
@@ -852,56 +856,3 @@ body::before {
 }
 
 /* 响应式设计 */
-@media (max-width: 768px) {
-    .room-container {
-        width: 300px;
-        height: 300px;
-        perspective: 800px;
-        /* 增强移动端触摸体验 */
-        cursor: grab;
-    }
-    
-    .room-container:active {
-        cursor: grabbing;
-    }
-    
-    .wall {
-        width: 300px;
-        height: 300px;
-        padding: 15px;
-    }
-    
-    .front-wall {
-        transform: rotateY(0deg) translateZ(150px);
-    }
-    
-    .back-wall {
-        transform: rotateY(180deg) translateZ(150px);
-    }
-    
-    .left-wall {
-        transform: rotateY(-90deg) translateZ(150px);
-    }
-    
-    .right-wall {
-        transform: rotateY(90deg) translateZ(150px);
-    }
-    
-    .top-wall {
-        transform: rotateX(90deg) translateZ(150px);
-    }
-    
-    .bottom-wall {
-        transform: rotateX(-90deg) translateZ(150px);
-    }
-    
-    .wall h3 {
-        font-size: 18px;
-    }
-    
-    .game-ui {
-        top: 10px;
-        left: 10px;
-        padding: 15px;
-    }
-}

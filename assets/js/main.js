@@ -550,12 +550,6 @@ document.addEventListener('DOMContentLoaded', function() {
         isDragging = true;
     }, { passive: true });
     
-    // 触摸移动 - 移除实时预览，减少性能消耗
-    roomContainer.addEventListener('touchmove', function(e) {
-        if (!isDragging || e.touches.length !== 1) return;
-        // 不阻止默认行为，让页面可以正常滚动
-    }, { passive: true });
-    
     // 触摸结束
     roomContainer.addEventListener('touchend', function(e) {
         if (!isDragging) return;
@@ -593,23 +587,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         isDragging = false;
     }, { passive: true });
-            } else {
-                // 垂直拖拽
-                if (deltaY > 0) {
-                    // 向下拖拽 - 显示上墙
-                    rotateTo('top');
-                } else {
-                    // 向上拖拽 - 显示下墙
-                    rotateTo('bottom');
-                }
-            }
-        } else {
-            // 拖拽距离不够，恢复到当前墙面
-            rotateTo(currentWall);
-        }
-        
-        isDragging = false;
-    }, { passive: false });
     
     // 键盘控制（保留原有功能）
     document.addEventListener('keydown', function(event) {
