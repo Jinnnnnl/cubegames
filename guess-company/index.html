@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>猜猜是哪家</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>猜猜是哪家</h1>
+        
+        <div class="status-container">
+            <div id="score-display" class="score-display">得分: 0 | 正确率: 0/0</div>
+            <div id="card-count-display" class="card-count-display">卡牌: 0/0 (剩余: 0)</div>
+        </div>
+        
+        <div id="card-container" class="card-container">
+            <!-- 卡牌将在这里显示 -->
+            <p>准备开始游戏...</p>
+        </div>
+        
+        <div class="input-container">
+            <div class="input-group">
+                <input type="text" id="answer-input" placeholder="输入管理人首字母缩写..." autocomplete="off">
+                <button id="submit-button" class="submit-button">提交</button>
+            </div>
+            
+            <div id="feedback-display" class="feedback"></div>
+        </div>
+        
+        <div class="button-container">
+            <button id="next-button" style="display: none;">下一张卡牌</button>
+            <button id="reset-button">重置游戏</button>
+        </div>
+    </div>
+    
+    <!-- 分享界面 -->
+    <div id="share-container" class="share-container">
+        <button id="share-close-button" class="close-button">&times;</button>
+        <div class="share-content">
+            <h2 class="share-title">恭喜你答对了！</h2>
+            
+            <div class="share-card">
+                <img id="share-card-image" class="share-card-image" src="" alt="Card">
+                <p id="share-card-answer" class="share-card-answer"></p>
+            </div>
+            
+            <p class="share-message">你能猜对几个？来这里试试吧！</p>
+            
+            <img class="share-qr" src="assets/wechat.jpg" alt="WeChat QR Code">
+            
+            <div class="share-buttons">
+                <button class="share-button">分享</button>
+                <button id="copy-link-button">复制链接</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 脚本 -->
+    <script src="js/cardManager.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
